@@ -1,0 +1,26 @@
+{
+  "name": "boragov-v3-front",
+  "version": "1.0.0",
+  "description": "Comporta os módulos referentes ao front-end do projeto boraGov",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegovasm/boragov-v3-front.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diegovasm/boragov-v3-front/issues"
+  },
+  "homepage": "https://github.com/diegovasm/boragov-v3-front#readme",
+  "dependencies": {
+    "axios": "^1.2.1",
+    "bootstrap": "^5.2.3",
+    "react-bootstrap": "^2.7.0",
+    "react-router-dom": "^6.4.4"
+  }
+}

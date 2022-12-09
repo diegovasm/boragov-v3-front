@@ -12,6 +12,7 @@ import { useState } from "react";
 import { ToastContainer } from "react-bootstrap";
 import BuscaQuestoes from "./buscaQuestoes/BuscaQuestoes";
 export default function App() {
+
   const [form, setForm] = useState({
     titulo: "",
     problema: "",
@@ -71,14 +72,4 @@ export default function App() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
 

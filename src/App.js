@@ -24,7 +24,7 @@ import { AuthContextComponent } from "./contexts/authContext";
 
 export default function App() {
 
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
 
 
   return (
@@ -32,9 +32,9 @@ export default function App() {
       <ToastContainer />
       <AuthContextComponent>
         <NavigationBar setLogin={setLogin} />
-        <MenuLateral/>
+        <MenuLateral setLogin={setLogin}/>
         <Routes>
-          <Route path="/user/login" element={<LoginSignUp />}>
+          <Route path="/" element={<LoginSignUp />}>
             {" "}
           </Route>
           <Route path="/user/perfil" element={<UserProfile />}>

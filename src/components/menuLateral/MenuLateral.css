@@ -1,0 +1,40 @@
+.menuLateral {
+
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 0 0 2rem;
+    margin: 0 20% 0 10%;
+    border: 0 20 0 0;
+    text-decoration: none;
+    max-width: 5rem;
+    
+    background-color: lightgray;
+
+}
+
+.menuQuestoes{
+    
+    font-size: 1.5rem;
+
+}
+
+.subMenuLateral{
+
+    padding-left: 0rem;
+    font-size: 1.2rem;
+}
+
+.badgeTags{
+
+    background-color: navy;
+    color: white;
+}
+.badgeUsers{
+
+    background-color: orange;
+    color: white;
+}
+.badgeOrgaos{
+
+    background-color: purple;
+    color: white;
+}

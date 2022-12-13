@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
 import MenuLateral from "../src/components/menuLateral/MenuLateral.js";
 import NavigationBar from "../src/components/navigationBar/NavigationBar.js";
 
@@ -20,13 +21,14 @@ import LoginSignUp from "../src/components/users/LoginSignUp.js";
 import ErrorPage from "../src/components/error/ErrorPage.js";
 import { useState } from "react";
 import { ToastContainer } from "react-bootstrap";
-import { AuthContextComponent } from "./contexts/authContext";
+import { AuthContextComponent } from "./contexts/authContext.js";
 
 export default function App() {
 
   const [login, setLogin] = useState(false);
 
 
+  
   return (
     <div className="App">
       <ToastContainer />

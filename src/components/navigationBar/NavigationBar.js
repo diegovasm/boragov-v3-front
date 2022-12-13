@@ -48,7 +48,7 @@ export default function NavigationBar({setLogin}) {
 
   const handleLogout = () => {
     setLogin(true)
-    navigate('/user/login', {replace:true})
+    navigate('/', {replace:true})
   }
 
   useEffect(() => {

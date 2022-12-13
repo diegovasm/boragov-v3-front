@@ -83,15 +83,22 @@ export default function LoginSignUp() {
         alert("Favor preencher o e-mail do usuário")
       }else if(authForm.password.length < 6){
         alert("O password deve conter pelo menos 6 dígitos")
-      }else if(authForm.codSiape.length != 6){
-        alert("O código SIAPE deve conter 6 dígitos")
+      }else if(authForm.codSiape.length !== 7){
+        alert("O código SIAPE deve conter 7 dígitos")
       }else if(authForm.nickName === ""){
         alert("O nick deve ser preenchido")
       }else{
 
+        if(authForm.role === "admin"){
+          authForm.isAdmin = true;
+        }else{
+          authForm.isAdmin = false;
+        }
         //envia os dados para que o servidor prossiga com o 
         //cadastro
-        await api.post("/users/signup", authForm)
+
+        console.log(authForm)
+        await api.post("/user/signup", authForm)
 
         toast.success("Cadastro realizado com sucesso", {
             

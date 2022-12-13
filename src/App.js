@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
 import MenuLateral from "../src/components/menuLateral/MenuLateral.js";
 import NavigationBar from "../src/components/navigationBar/NavigationBar.js";
 
@@ -27,6 +28,7 @@ export default function App() {
   const [login, setLogin] = useState(false);
 
 
+  
   return (
     <div className="App">
       <ToastContainer />

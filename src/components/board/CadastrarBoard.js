@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import './NewBoard.css'
+import './CadastrarBoard.css'
 
 export default function CadastrarBoard({ apiUrl, form, setForm }) {
     const [value, setValue] = useState('');

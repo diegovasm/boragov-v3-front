@@ -19,7 +19,7 @@ import LoginSignUp from "../src/components/users/LoginSignUp.js";
 
 import ErrorPage from "../src/components/error/ErrorPage.js";
 import { useState } from "react";
-import { ToastContainer } from "react-bootstrap";
+import { Container, ToastContainer } from "react-bootstrap";
 import { AuthContextComponent } from "./contexts/authContext";
 
 export default function App() {
@@ -32,6 +32,7 @@ export default function App() {
       <ToastContainer />
       <AuthContextComponent>
         <NavigationBar setLogin={setLogin} />
+        <Container className="principal ms-0">
         <MenuLateral setLogin={setLogin}/>
         <Routes>
           <Route path="/" element={<LoginSignUp />}>
@@ -65,6 +66,7 @@ export default function App() {
             {" "}
           </Route>
         </Routes>
+        </Container>
       </AuthContextComponent>
     </div>
   );

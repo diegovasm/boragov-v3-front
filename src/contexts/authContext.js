@@ -9,7 +9,7 @@ function AuthContextComponent(props) {
   });
 
   useEffect(() => {
-    const storedUser = localStorage.getItem(loggedUser);
+    const storedUser = localStorage.getItem("loggedUser");
     const storedUserParse = JSON.parse(storedUser || '""');
 
     if (storedUserParse.token) {

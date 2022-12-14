@@ -7,7 +7,7 @@ import { api } from "../../api/api.js"
 export default function LoginSignUp() {
 
   const [authMode, setAuthMode] = useState("signin")
-  const { loggedUser, setLoggedUser } = useContext(AuthContext)
+  const { setLoggedUser } = useContext(AuthContext)
   const navigate = useNavigate()
   const [authForm, setAuthForm] = useState({
     nome: "",

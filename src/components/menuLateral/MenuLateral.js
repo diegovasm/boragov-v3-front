@@ -17,7 +17,7 @@ export default function MenuLateral() {
 
   const handleChangeTag = () =>{
 
-    navigate('/tag/alltag')
+    navigate('/tag')
   }
   const handleChangeUsuarios = () =>{
 

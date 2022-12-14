@@ -4,15 +4,23 @@ import { api } from "../../api/api.js";
 
 export default function TagList(){
 
-    const [APIData, setAPIData] = useState([]);
+    const [apiData, setApiData] = useState([]);
     
+    try {
+        
+        useEffect(() => {
+            
+            const fetchGetTag = async () => {
 
-    useEffect(() => {
-        api.get(`/alltag`)
-            .then((response) => {
-                setAPIData(response.data);
-            })
-    }, [])
+                const response = await api.get(`/tag/alltag`)
+                setApiData(response.data);
+            }
+            fetchGetTag()
+            
+        }, [])
+    } catch (error) {
+        console.log(error)
+    }
 
 
        return(
@@ -21,7 +29,7 @@ export default function TagList(){
     
     <Card  style={{ width: '18rem' }}>      
        <Card.Body>
-      {APIData.map((data) =>{
+      {apiData.map((data) =>{
         return (
         <><Card.Title>{data.nome}</Card.Title>
         <Card.Text> {data.descricao}</Card.Text></>  

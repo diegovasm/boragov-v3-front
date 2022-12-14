@@ -9,8 +9,16 @@ import {
   CDBIcon,
   CDBBadge
 } from "cdbreact"
+import { useNavigate } from "react-router-dom"
 
 export default function MenuLateral() {
+
+  const navigate = useNavigate()
+
+  const handleChangeOrgaos = () =>{
+
+    navigate('/orgao')
+  }
   return (
 
     <CDBSidebar textColor="#333" backgroundColor="#f0f0f0">
@@ -39,7 +47,8 @@ export default function MenuLateral() {
           >
           Usuários
           </CDBSidebarMenuItem>
-          <CDBSidebarMenuItem 
+          <CDBSidebarMenuItem
+            onClick={handleChangeOrgaos} 
             suffix={
             <CDBBadge className="badgeOrgaos" color="info" size="small" borderType="pill" intensity={900}>
                 50

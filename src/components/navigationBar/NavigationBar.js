@@ -6,12 +6,14 @@ import logo from "../../image/boraGOV.png"
 import Dropdown from "react-bootstrap/Dropdown"
 import { Button, DropdownButton } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { api } from "../../api/api.js"
+import { AuthContext } from "../../contexts/authContext.js";
 
 export default function NavigationBar({setLogin}) {
   const [search, setSearch] = useState("")
   const navigate = useNavigate()
+  const { loggedUser } = useContext(AuthContext);
 
   const handleOnSearch = (e) => {
 
@@ -47,7 +49,9 @@ export default function NavigationBar({setLogin}) {
   }
 
   const handleLogout = () => {
-    setLogin(true)
+    //setLogin(true)
+    localStorage.removeItem(loggedUser);
+    localStorage.clear()
     navigate('/', {replace:true})
   }
 

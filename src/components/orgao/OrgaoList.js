@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import { api } from "../../api/api.js";
 
 function OrgaoList({ orgaos, setOrgaos }) {
   useEffect(() => {
     async function fetchOrgaos() {
-      const response = await axios.get("https://boragov.cyclic.app");
+      const response = await api.get("/orgao");
       setOrgaos(response.data);
     }
 

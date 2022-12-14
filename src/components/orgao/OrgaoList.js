@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { api } from "../../api/api.js";
 
 function OrgaoList() {
-  const { orgaos, setOrgaos } = useState([]);
+  const [ orgaos, setOrgaos ] = useState([]);
 
   useEffect(() => {
     try {

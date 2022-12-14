@@ -37,7 +37,7 @@ export default function LoginSignUp() {
         
             const response = api.post("/user/login", authForm)
             setLoggedUser({...response.data})
-            localStorage.setItem(loggedUser, JSON.stringify(response.data))
+            localStorage.setItem("loggedUser", JSON.stringify(response.data))
 
             navigate("/board")
 

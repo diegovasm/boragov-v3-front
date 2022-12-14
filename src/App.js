@@ -32,7 +32,7 @@ export default function App() {
   return (
     <div className="App">
       <ToastContainer />
-      {/* <AuthContextComponent> */}
+      <AuthContextComponent>
         <NavigationBar setLogin={setLogin} />
         <Container className="principal ms-0">
         <MenuLateral setLogin={setLogin}/>
@@ -69,7 +69,7 @@ export default function App() {
           </Route>
         </Routes>
         </Container>
-      {/* </AuthContextComponent> */}
+      </AuthContextComponent>
     </div>
   );
 }

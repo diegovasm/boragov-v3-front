@@ -7,7 +7,7 @@ import { api } from "../../api/api.js"
 export default function LoginSignUp() {
 
   const [authMode, setAuthMode] = useState("signin")
-  const { setLoggedUser } = useContext(AuthContext)
+  const { loggedUser, setLoggedUser } = useContext(AuthContext)
   const navigate = useNavigate()
   const [authForm, setAuthForm] = useState({
     nome: "",
@@ -37,7 +37,7 @@ export default function LoginSignUp() {
         
             const response = await api.post("/user/login", authForm)
             setLoggedUser({...response.data})
-            localStorage.setItem("loggedUser", JSON.stringify(response.data))
+            localStorage.setItem("loggedUser", JSON.stringify(loggedUser))
 
             navigate("/board")
 

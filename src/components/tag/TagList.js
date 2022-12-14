@@ -6,21 +6,21 @@ export default function TagList(){
 
     const [apiData, setApiData] = useState([]);
     
-    try {
+    
+    useEffect(() => {
         
-        useEffect(() => {
-            
+        try {
             const fetchGetTag = async () => {
 
-                const response = await api.get(`/tag/alltag`)
+                const response = await api.get("/tag/alltag")
+                console.log(response)
                 setApiData(response.data);
             }
             fetchGetTag()
-            
-        }, [])
-    } catch (error) {
-        console.log(error)
-    }
+        } catch (error) {
+            console.log(error)
+        }
+    }, [])
 
 
        return(

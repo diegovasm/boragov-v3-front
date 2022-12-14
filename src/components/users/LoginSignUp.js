@@ -36,6 +36,7 @@ export default function LoginSignUp() {
         try{
         
             const response = api.post("/user/login", authForm)
+            console.log(response)
             setLoggedUser({...response.data})
             localStorage.setItem("loggedUser", JSON.stringify(response.data))
 

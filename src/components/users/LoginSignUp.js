@@ -35,7 +35,7 @@ export default function LoginSignUp() {
         e.preventDefault()
         try{
         
-            const response = api.post("/user/login", authForm)
+            const response = await api.post("/user/login", authForm)
             setLoggedUser({...response.data})
             localStorage.setItem("loggedUser", JSON.stringify(response.data))
 

@@ -96,7 +96,6 @@ export default function LoginSignUp() {
         //envia os dados para que o servidor prossiga com o 
         //cadastro
 
-        console.log(authForm)
         await api.post("/user/signup", authForm)
 
         toast.success("Cadastro realizado com sucesso", {

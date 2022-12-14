@@ -15,6 +15,14 @@ export default function MenuLateral() {
 
   const navigate = useNavigate()
 
+  const handleChangeTag = () =>{
+
+    navigate('/tag/alltag')
+  }
+  const handleChangeUsuarios = () =>{
+
+    navigate('/user')
+  }
   const handleChangeOrgaos = () =>{
 
     navigate('/orgao')
@@ -28,6 +36,7 @@ export default function MenuLateral() {
       <CDBSidebarContent>
         <CDBSidebarMenu>
           <CDBSidebarMenuItem 
+          onClick={handleChangeTag} 
            suffix={
             <CDBBadge className="badgeTags" color="primary-gradient" size="small" borderType="pill" textColor="white" intensity={900}>
                 130
@@ -38,6 +47,7 @@ export default function MenuLateral() {
           Tags
           </CDBSidebarMenuItem>
           <CDBSidebarMenuItem 
+            onClick={handleChangeUsuarios} 
             suffix={
             <CDBBadge className="badgeUsers" color="info" size="small" borderType="pill" intensity={900}>
                 70

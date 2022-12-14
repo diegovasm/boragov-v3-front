@@ -13,7 +13,6 @@ import { AuthContext } from "../../contexts/authContext.js";
 export default function NavigationBar({setLogin}) {
   const [search, setSearch] = useState("")
   const navigate = useNavigate()
-  const { loggedUser } = useContext(AuthContext);
 
   const handleOnSearch = (e) => {
 
@@ -49,8 +48,7 @@ export default function NavigationBar({setLogin}) {
   }
 
   const handleLogout = () => {
-    //setLogin(true)
-    localStorage.removeItem(loggedUser);
+    
     localStorage.clear()
     navigate('/', {replace:true})
   }

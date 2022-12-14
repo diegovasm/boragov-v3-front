@@ -164,7 +164,7 @@ export default function LoginSignUp() {
               <input
                 hidden
                 name="emailPessoal"
-                value={""}
+                value={authForm.emailPessoal}
                 onChange={handleOnChange}
               />
               <input

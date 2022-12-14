@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { api } from "../../api/api.js";
 
-function OrgaoList({ orgaos, setOrgaos }) {
+function OrgaoList() {
+
+  const { orgaos, setOrgaos } = useState([])
   useEffect(() => {
     async function fetchOrgaos() {
       const response = await api.get("/orgao");

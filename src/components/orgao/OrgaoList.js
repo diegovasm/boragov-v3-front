@@ -9,12 +9,10 @@ function OrgaoList() {
     try {
         const fetchOrgaos = async () => {
         const response = await api.get("/orgao");
-        console.log(response)
         setOrgaos(response.data);
       };
 
       fetchOrgaos();
-      console.log(`Variavel orgaos setada ${orgaos}`)
     } catch (error) {
       console.log(error);
     }

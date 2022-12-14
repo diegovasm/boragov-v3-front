@@ -1,6 +1,5 @@
-import { useEffect, useState, useContext } from "react"
-import axios from "axios"
-import { useNavigate, Link } from "react-router-dom"
+import { useState, useContext } from "react"
+import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import { AuthContext } from "../../contexts/authContext.js"
 import { api } from "../../api/api.js"
@@ -8,9 +7,8 @@ import { api } from "../../api/api.js"
 export default function LoginSignUp() {
 
   const [authMode, setAuthMode] = useState("signin")
-  const { setLoggedUser } = useContext(AuthContext)
+  const { loggedUser, setLoggedUser } = useContext(AuthContext)
   const navigate = useNavigate()
-  const [usersData, setUsersData] = useState([])
   const [authForm, setAuthForm] = useState({
     nome: "",
     emailPessoal: "",
@@ -39,7 +37,7 @@ export default function LoginSignUp() {
         
             const response = api.post("/user/login", authForm)
             setLoggedUser({...response.data})
-            localStorage.setItem("loggedUser", JSON.stringify(response.data))
+            localStorage.setItem(loggedUser, JSON.stringify(response.data))
 
             navigate("/board")
 

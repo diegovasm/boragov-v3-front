@@ -102,14 +102,6 @@ export default function CadastrarBoard({ apiUrl }) {
           <Form.Group>
             <Form.Label>Tags:</Form.Label>
             <Form.Group className="tags-div-board">
-            <Form.Control
-              className="tag-board"
-              type="text"
-            //   name="tags"
-              placeholder="Adicione as tags separadas por um espaço"
-            //   value={form.tags}
-            //   onChange={handleChange}
-            />
             <Button>
               Adicionar Tag
             </Button>

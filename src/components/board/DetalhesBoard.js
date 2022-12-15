@@ -15,6 +15,7 @@ export default function DetalhesBoard(){
   const { id } = useParams();
   const navigate = useNavigate();
   const [formularioAtivo, setFormularioAtivo] = useState(false);
+  const editor = new Quill('.editor')
   const toolbarOptions = {toolbar: [
     [{font: []}, { size: [ 'small', false, 'large', 'huge' ]}],
     [{ align: [] }, 'direction' ],
@@ -52,7 +53,6 @@ export default function DetalhesBoard(){
 
   const mudaFormulario = () => {
     let formQuestao = document.querySelectorAll(".formQuestao");
-    let conteudoboard = document.querySelector(".ql-container")
     let btnAtualizar = document.querySelector(".btn-atualizar");
     let btnSalvar = document.querySelector(".btn-salvar");
     let btnExcluir = document.querySelector(".btn-excluir");
@@ -61,12 +61,14 @@ export default function DetalhesBoard(){
 
     if (!formularioAtivo){      
       formQuestao.forEach((element) => {
-        Quill.enable()
+        element.removeAttribute("disabled");
       });
+      editor.enable()
     } else {      
       formQuestao.forEach((element) => {
-        Quill.enable(false)        
+        element.setAttribute("disabled", "");
       });
+      editor.disable()
     }
     btnAtualizar.classList.toggle("hide");
     btnSalvar.classList.toggle("hide");
@@ -87,7 +89,7 @@ export default function DetalhesBoard(){
     try {
       const clone = { ...board };
       delete clone._id;
-      await axios.put(`board/edit/${id}`, clone);
+      await api.put(`board/edit/${id}`, clone);
     } catch (error) {
       console.log(error);
     }   
@@ -97,7 +99,7 @@ export default function DetalhesBoard(){
   const handleShow = () => setShow(true);
 
   const deleteBoard = async () => {
-    await axios.delete(`board/delete/${id}`);
+    await api.delete(`board/delete/${id}`);
     navigate("/board");
 
     toast.success("Board deletado com sucesso!", {
@@ -156,7 +158,7 @@ export default function DetalhesBoard(){
                 </Form.Group>
             </Form.Group>
             <Card.Text className="det-mais-info">
-              Data de Cadastro: {board.datacadastro || ""}{" "}
+              Data de Cadastro: {board.createdAt || ""}{" "}
               <span> &nbsp; &nbsp; &nbsp; </span>Órgão: {board.orgao || ""}
             </Card.Text>
             <Card.Text className="det-mais-info">

@@ -25,9 +25,9 @@ import { AuthContextComponent } from "./contexts/authContext.js";
 
 export default function App() {
 
-  //const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  let loggedIn = (localStorage.length === 0) ? false : true
+  (localStorage.length === 0) ? setLoggedIn(false) : setLoggedIn(true)
   
   if(loggedIn){
 
@@ -39,7 +39,7 @@ export default function App() {
             <Container className="principal ms-0">
             <MenuLateral />
               <Routes>
-                <Route path="/" element={<LoginSignUp />}>
+                <Route path="/" element={<LoginSignUp setLoggedIn={setLoggedIn}/>}>
                   {" "}
                 </Route>
                 <Route path="/user/perfil" element={<UserProfile />}>

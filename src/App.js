@@ -80,7 +80,7 @@ export default function App() {
     <div className="App">
           <ToastContainer />
           <AuthContextComponent>
-            <Container className="principal ms-0">
+            <Container className="principal ms-4">
               <Routes>
                 <Route path="/" element={<LoginSignUp />}>
                   {" "}

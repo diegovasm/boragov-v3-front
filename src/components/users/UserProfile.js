@@ -79,7 +79,7 @@ function UserProfile() {
                 type="text"
                 placeholder="Insira o nome completo do usuário"
                 name="nome"
-                value={userForm.nome || ""}
+                value={userForm.nome}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -89,7 +89,7 @@ function UserProfile() {
                 type="email"
                 placeholder="Insira o e-mail pessoal"
                 name="emailPessoal"
-                value={userForm.emailPessoal || ""}
+                value={userForm.emailPessoal}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -99,7 +99,7 @@ function UserProfile() {
                 type="email"
                 placeholder="Insira o e-mail institucional"
                 name="emailInstitucional"
-                value={userForm.emailInstitucional || ""}
+                value={userForm.emailInstitucional}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -108,7 +108,7 @@ function UserProfile() {
               <Form.Control
                 type="password"
                 name="password"
-                value={userForm.password || ""}
+                value={userForm.password}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -118,7 +118,7 @@ function UserProfile() {
                 type="number"
                 placeholder="Insira o código SIAPE"
                 name="codSiape"
-                value={userForm.codSiape || ""}
+                value={userForm.codSiape}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -128,7 +128,7 @@ function UserProfile() {
                 type="text"
                 placeholder="Insira o seu nickname"
                 name="nickName"
-                value={userForm.nickName || ""}
+                value={userForm.nickName}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -145,7 +145,7 @@ function UserProfile() {
               <Form.Control
                 type="file"
                 name="profileImg"
-                value={userForm.profileImg || ""}
+                value={userForm.profileImg}
                 onChange={handleChange}
               />
             </Form.Group>

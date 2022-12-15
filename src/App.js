@@ -24,10 +24,6 @@ import { Container, ToastContainer } from "react-bootstrap";
 import { AuthContextComponent } from "./contexts/authContext.js";
 
 export default function App() {
-
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  (localStorage.length === 0) ? setLoggedIn(false) : setLoggedIn(true)
   
         return (
           <div className="App">

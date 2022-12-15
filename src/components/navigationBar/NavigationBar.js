@@ -94,7 +94,10 @@ export default function NavigationBar() {
     }
   })
   if(!loggedUser){
-    return( navigate('/'))
+    return( 
+      <>
+      </>
+    )
   }
   return (
     <Navbar>

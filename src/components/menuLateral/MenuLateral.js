@@ -10,8 +10,12 @@ import {
   CDBBadge
 } from "cdbreact"
 import { useNavigate } from "react-router-dom"
+import { useContext } from "react"
+import { AuthContext } from "../../contexts/authContext.js"
 
 export default function MenuLateral() {
+
+  const { loggedUser} = useContext(AuthContext)
 
   const navigate = useNavigate()
 
@@ -26,6 +30,9 @@ export default function MenuLateral() {
   const handleChangeOrgaos = () =>{
 
     navigate('/orgao')
+  }
+  if(!loggedUser){
+    return(navigate('/'))
   }
   return (
 

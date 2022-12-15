@@ -158,7 +158,7 @@ export default function DetalhesBoard(){
                 </Form.Group>
             </Form.Group>
             <Card.Text className="det-mais-info">
-              Data de Cadastro: {board.datacadastro || ""}{" "}
+              Data de Cadastro: {board.createdAt || ""}{" "}
               <span> &nbsp; &nbsp; &nbsp; </span>Órgão: {board.orgao || ""}
             </Card.Text>
             <Card.Text className="det-mais-info">

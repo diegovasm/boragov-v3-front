@@ -16,8 +16,7 @@ export default function NavigationBar() {
   
   const { loggedUser} = useContext(AuthContext)
   const id = loggedUser?.user._id;
-  console.log(loggedUser)
-  console.log(id)
+  
   const handleOnSearch = (e) => {
 
     try{

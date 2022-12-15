@@ -8,9 +8,18 @@
     border-bottom-right-radius: 0.5em;
     background: #fefcfc;
   }
-.container-newboard{
-    width: 50vw;
+/* .container-newboard{
+    width: 70vw;
     margin: 0 5vw;
+} */
+.card-detalhe{
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  margin: 0 5vw;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 15px;
+  background-color: rgb(241, 241, 241);
 }
 
 .tags-div-board{

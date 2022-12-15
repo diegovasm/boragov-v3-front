@@ -25,6 +25,7 @@ export default function TagList() {
         justifyContent: "spaceBetween",
         gap: "1rem",
         flexWrap: "wrap",
+        marginLeft: "1rem",
       }}
     >
       {apiData.map((data) => {

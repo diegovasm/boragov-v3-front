@@ -11,15 +11,13 @@
 .container-newboard{
     margin: 0 5vw;
 }
-.det-board {
-  width: 99.5%;
+.card-detalhe {
+  width: 70vw;
 }
 .tags-div-board{
   display: flex;
 }
-.tag-board{
-  width: 80%;
-} 
+
 .titulo-board{
   width: 99.5%;
 }

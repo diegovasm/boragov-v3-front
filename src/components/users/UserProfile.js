@@ -8,7 +8,7 @@ import { AuthContext } from "../../contexts/authContext.js";
 
 function UserProfile() {
   const navigate = useNavigate();
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [userForm, setUserForm] = useState({
     nome: "",
     emailPessoal: "",
@@ -22,9 +22,7 @@ function UserProfile() {
   });
 
   const { loggedUser } = useContext(AuthContext)
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+ 
   useEffect(() => {
     const fetchUserProfile = async () => {
       const response = await api.get(`/user/${loggedUser.id}`);
@@ -42,7 +40,7 @@ function UserProfile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setShow(false)
     try {
       await api.put(`/user/edit/${loggedUser.id}`, userForm);
 
@@ -76,7 +74,7 @@ function UserProfile() {
   return (
     <div>
 
-      <Modal onShow={handleShow}>
+      <Modal show={show}>
         <Modal.Header closeButton>
           <Modal.Title>Editar Perfil do Usuário</Modal.Title>
         </Modal.Header>
@@ -159,7 +157,7 @@ function UserProfile() {
               />
             </Form.Group>
            
-            <Button variant="success" type="submit" onClick={handleClose}>
+            <Button variant="success" type="submit" onSubmit={handleSubmit}>
               Atualizar Usuário
             </Button>
           </Form>

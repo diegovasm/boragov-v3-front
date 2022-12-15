@@ -197,8 +197,8 @@ export default function DetalhesBoard(){
                 variant="danger"
                 className="btn-cancelar hide"
                 onClick={()=>{
-                  mudaFormulario()
-                  navigate(`/board/detalhes/${board._id}`)                  
+                  setIsLoading(true)
+                  mudaFormulario()                  
                   }}
               >
                 Cancelar

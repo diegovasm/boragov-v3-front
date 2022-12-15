@@ -28,7 +28,7 @@ export default function App() {
       <ToastContainer />
       <AuthContextComponent>
         <NavigationBar />
-        <Container className="principal">
+        <Container className="principal ms-0">
           <MenuLateral />
           <Routes>
             <Route path="/" element={<LoginSignUp />}>

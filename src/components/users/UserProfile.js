@@ -143,7 +143,7 @@ function UserProfile() {
             <Form.Group className="mb-3">
               <Form.Label>Inserir imagem</Form.Label>
               <Form.Control
-                type="file"
+                type="string"
                 name="profileImg"
                 value={userForm.profileImg}
                 onChange={handleChange}

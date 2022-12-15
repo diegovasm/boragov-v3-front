@@ -26,6 +26,7 @@ export default function DetalhesBoard(){
     ['clean']
   ]}
   const [estadoEditor, setEstadoEditor] = useState(true)
+  const [estadoTema, setEstadoTema] = useState("bubble")
 
   const incrementaView = () => {
     const clone = board;
@@ -65,11 +66,13 @@ export default function DetalhesBoard(){
         element.removeAttribute("disabled");
       });
       setEstadoEditor(false);
+      setEstadoTema("snow")
     } else {      
       formQuestao.forEach((element) => {
         element.setAttribute("disabled", "");
       });
       setEstadoEditor(true);
+      setEstadoTema("bubble")
     }
     btnAtualizar.classList.toggle("hide");
     btnSalvar.classList.toggle("hide");
@@ -158,7 +161,7 @@ export default function DetalhesBoard(){
                 onChange={handleChange}
               />
                 <Form.Group>
-                    <ReactQuill className="editor" onChange={handleChangeQuill}  theme="snow" value={board.conteudo} readOnly={estadoEditor} modules={toolbarOptions}>
+                    <ReactQuill className="editor" onChange={handleChangeQuill}  theme={estadoTema} value={board.conteudo} readOnly={estadoEditor} modules={toolbarOptions}>
                     </ReactQuill>
                 </Form.Group>
             </Form.Group>

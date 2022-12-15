@@ -7,7 +7,6 @@ import Dropdown from "react-bootstrap/Dropdown"
 import { Button, DropdownButton } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import { useState, useEffect, useContext } from "react"
-import { api } from "../../api/api.js"
 import { AuthContext } from "../../contexts/authContext.js"
 
 export default function NavigationBar() {
@@ -74,8 +73,6 @@ export default function NavigationBar() {
       const keyDownHandler = async (event) => {
         if (event.key === "Enter") {
           event.preventDefault();
-          const response = await api.get(`/board/${search}`)
-          setSearch(response.data)
           navigate(`/board/${search}`, { replace: true });
         }
       }

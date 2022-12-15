@@ -1,6 +1,6 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../../api/api.js";
 
@@ -9,17 +9,16 @@ function UserProfile() {
   const navigate = useNavigate();
   const [show, setShow] = useState(true);
   const [userForm, setUserForm] = useState({});
-
-  const userId = localStorage.getItem("loggedUser")
+  const { id } = useParams()
  
   useEffect(() => {
     const fetchUserProfile = async () => {
-      const response = await api.get(`/user/${userId}`);
+      const response = await api.get(`/user/${id}`);
       setUserForm(response.data);
     };
 
     fetchUserProfile();
-  }, [userId, setUserForm]);
+  }, [id, setUserForm]);
 
   const handleChange = (e) => {
   
@@ -36,7 +35,7 @@ function UserProfile() {
     e.preventDefault();
     setShow(false)
     try {
-      await api.put(`/user/edit/${userId}`, userForm);
+      await api.put(`/user/edit/${id}`, userForm);
 
       toast.success("Perfil do usuário atualizado!", {
           position: "top-right",

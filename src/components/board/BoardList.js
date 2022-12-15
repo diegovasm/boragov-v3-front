@@ -44,21 +44,24 @@ export default function BoardList() {
     )
   })
 
-  if(!loggedUser){
+  if(loggedUser){
+    return (
+      <Container className="lista-questoes">
+        {isLoading && (
+          <div className="questoes-spinner">
+            <Spinner className="mt-4" animation="border" />
+          </div>
+        )}
+        {!isLoading && <div>{renderBoards}</div>}
+      </Container>
+    )
+    
+  }else {
+
     return(
       <>
 
       </>
     )
   }
-  return (
-    <Container className="lista-questoes">
-      {isLoading && (
-        <div className="questoes-spinner">
-          <Spinner className="mt-4" animation="border" />
-        </div>
-      )}
-      {!isLoading && <div>{renderBoards}</div>}
-    </Container>
-  )
 }

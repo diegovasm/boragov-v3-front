@@ -28,8 +28,8 @@ export default function TagList() {
     >
       {apiData.map((data) => {
         return (
-          <Card>
-            <div className="" style={{ maxWidth: "50%" }}>
+          <Card style={{ maxWidth: "50%" }}>
+            <div className="">
               <Card.Body>
                 <Card.Title
                   style={{

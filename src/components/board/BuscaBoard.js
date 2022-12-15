@@ -47,7 +47,7 @@ export default function BuscaQuestoes() {
                 )
             })
               return (
-                  <Link to={`/detalhes/${board._id}`} >
+                  <Link to={`/board/detalhes/${board._id}`} >
                       <div className="item-board" id={board._id}>
                           <div className="indicadores-board">
                               <p>{board.votos} votos</p>

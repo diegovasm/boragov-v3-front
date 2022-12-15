@@ -35,7 +35,7 @@ export default function App() {
         <div className="App">
           <ToastContainer />
           <AuthContextComponent>
-            <NavigationBar  />
+            <NavigationBar  setLoggedIn={setLoggedIn}/>
             <Container className="principal ms-0">
             <MenuLateral />
               <Routes>

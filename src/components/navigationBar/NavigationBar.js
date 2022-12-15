@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { api } from "../../api/api.js"
 
-export default function NavigationBar() {
+export default function NavigationBar({setLoggedIn}) {
   const [search, setSearch] = useState("")
   const navigate = useNavigate()
 
@@ -60,6 +60,7 @@ export default function NavigationBar() {
     try {
       
       localStorage.clear()
+      setLoggedIn(false)
       navigate('/', {replace:true})
     } catch (error) {
       console.log(error)

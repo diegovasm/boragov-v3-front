@@ -76,7 +76,7 @@ function UserProfile() {
   return (
     <div>
 
-      <Modal >
+      <Modal onShow={handleShow}>
         <Modal.Header closeButton>
           <Modal.Title>Editar Perfil do Usuário</Modal.Title>
         </Modal.Header>
@@ -159,8 +159,7 @@ function UserProfile() {
               />
             </Form.Group>
            
-           
-            <Button variant="success" type="submit">
+            <Button variant="success" type="submit" onClick={handleClose}>
               Atualizar Usuário
             </Button>
           </Form>

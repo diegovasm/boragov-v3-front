@@ -39,6 +39,8 @@ function UserProfile() {
   };
   const handleClose = () =>{
     setShow(false)
+    navigate("/board");
+    window.location.reload()
   }
 
   const handleSubmit = async (e) => {
@@ -58,6 +60,7 @@ function UserProfile() {
           theme: "colored",
         });
         navigate("/board");
+        window.location.reload()
     } catch (error) {
       console.log(error);
 
@@ -76,7 +79,6 @@ function UserProfile() {
 
   return (
     <div>
-
       <Modal show={show}>
         <Modal.Header closeButton onClick={handleClose}>
           <Modal.Title>Editar Perfil do Usuário</Modal.Title>

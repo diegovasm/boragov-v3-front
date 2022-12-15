@@ -22,13 +22,14 @@ export default function TagList() {
       className="cardlist"
       style={{
         display: "flex",
+        justifyContent: "spaceBetween",
         gap: "1rem",
         flexWrap: "wrap",
       }}
     >
       {apiData.map((data) => {
         return (
-          <Card style={{ maxWidth: "50%" }}>
+          <Card style={{ maxWidth: "48%" }}>
             <div className="">
               <Card.Body>
                 <Card.Title

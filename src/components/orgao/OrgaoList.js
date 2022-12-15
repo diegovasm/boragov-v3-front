@@ -44,7 +44,6 @@ function OrgaoList() {
                   {data.nome}
                 </Card.Title>
                 <Card.Text>
-                  <div>{data.nome}</div>
                   <div>{data.image}</div>
                   <div> {data.localizacao}</div>
                   <div> {data.descricao}</div>

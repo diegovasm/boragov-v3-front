@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { api } from "../../api/api.js";
 
 function UserList() {
-  const [ users, setUsers ] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     try {
-        const fetchUsers = async () => {
+      const fetchUsers = async () => {
         const response = await api.get("/user");
         setUsers(response.data);
       };
@@ -19,21 +19,40 @@ function UserList() {
   }, []);
 
   return (
-    <div className="cardlist">
-      <Card style={{ width: "18rem" }}>
-        <Card.Body>
-          {users.map((data) => {
-            return (
-              <>
-                <Card.Title>{data.nome}</Card.Title>
-                <Card.Text>{data.image}</Card.Text>
-                <Card.Text> {data.nickName}</Card.Text>
-                <Card.Text> {data.emailInstitucional}</Card.Text>
-              </>
-            );
-          })}
-        </Card.Body>
-      </Card>
+    <div
+      className="cardlist"
+      style={{
+        display: "flex",
+        justifyContent: "spaceBetween",
+        gap: "1rem",
+        flexWrap: "wrap",
+        marginLeft: "1rem",
+      }}
+    >
+      {users.map((data) => {
+        return (
+          <Card style={{ width: "48%" }}>
+            <div className="">
+              <Card.Body>
+                <Card.Title
+                  style={{
+                    color: "#4682B4",
+                    backgroundColor: "lightblue",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {data.nome}
+                </Card.Title>
+                <Card.Text>
+                  <div>{data.image}</div>
+                  <div> {data.nickName}</div>
+                  <div> {data.emailInstitucional}</div>
+                </Card.Text>
+              </Card.Body>
+            </div>
+          </Card>
+        );
+      })}
     </div>
   );
 }

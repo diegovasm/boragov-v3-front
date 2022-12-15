@@ -18,11 +18,18 @@ export default function TagList() {
   }, []);
 
   return (
-    <div className="cardlist">
+    <div
+      className="cardlist"
+      style={{
+        display: "flex",
+        gap: "1rem",
+        flexWrap: "wrap",
+      }}
+    >
       {apiData.map((data) => {
         return (
           <Card>
-            <div className="" style={{}}>
+            <div className="" style={{ maxWidth: "50%" }}>
               <Card.Body>
                 <Card.Title
                   style={{

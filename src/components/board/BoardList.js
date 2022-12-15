@@ -55,13 +55,6 @@ export default function BoardList() {
         {!isLoading && <div>{renderBoards}</div>}
       </Container>
     )
-    
-  }else {
 
-    return(
-      <>
-
-      </>
-    )
   }
 }

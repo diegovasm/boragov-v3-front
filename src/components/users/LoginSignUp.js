@@ -7,7 +7,7 @@ import { api } from "../../api/api.js"
 export default function LoginSignUp() {
 
   const [authMode, setAuthMode] = useState("signin")
-  const { setLoggedUser } = useContext(AuthContext)
+  const { loggedUser, setLoggedUser } = useContext(AuthContext)
   const navigate = useNavigate()
   const [authForm, setAuthForm] = useState({
     nome: "",
@@ -154,91 +154,94 @@ export default function LoginSignUp() {
   }
 
   if (authMode === "signin") {
-    return (
-      <div className="Auth-form-container">
-        <form className="Auth-form" >
-          <div className="Auth-form-content">
-            <h3 className="Auth-form-title">Sign In</h3>
-            <div className="text-center">
-              Not registered yet?{" "}
-              <span className="link-primary" onClick={changeAuthMode}>
-                Sign Up
-              </span>
+    if(!loggedUser){
+
+      return (
+        <div className="Auth-form-container">
+          <form className="Auth-form" >
+            <div className="Auth-form-content">
+              <h3 className="Auth-form-title">Sign In</h3>
+              <div className="text-center">
+                Not registered yet?{" "}
+                <span className="link-primary" onClick={changeAuthMode}>
+                  Sign Up
+                </span>
+              </div>
+              <div className="form-group mt-3">
+                <label>Email address</label>
+                <input
+                  hidden
+                  name="nome"
+                  value={""}
+                  onChange={handleOnChange}
+                />
+                <input
+                  hidden
+                  name="emailPessoal"
+                  value={""}
+                  onChange={handleOnChange}
+                />
+                <input
+                  type="email"
+                  className="form-control mt-1"
+                  placeholder="Enter email"
+                  name="emailInstitucional"
+                  value={authForm.emailInstitucional}
+                  onChange={handleOnChange}
+                />
+              </div>
+              <div className="form-group mt-3">
+                <label>Password</label>
+                <input
+                  type="password"
+                  className="form-control mt-1"
+                  placeholder="Enter password"
+                  name="password"
+                  value={authForm.password}
+                  onChange={handleOnChange}
+                />
+                <input
+                  hidden
+                  name="codSiape"
+                  value={""}
+                  onChange={handleOnChange}
+                />
+                <input
+                  hidden
+                  name="profileImg"
+                  value={""}
+                  onChange={handleOnChange}
+                />
+                <input
+                  hidden
+                  name="nickName"
+                  value={""}
+                  onChange={handleOnChange}
+                />
+                <input
+                  hidden
+                  name="role"
+                  value={""}
+                  onChange={handleOnChange}
+                />
+              </div>
+              <div className="d-grid gap-2 mt-3">
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  onClick={handleOnSubmitSignIn}
+                >
+                  Submit
+                </button>
+              </div>
+              <p className="text-center mt-2">
+                Forgot <a href="/">password?</a>
+              </p>
             </div>
-            <div className="form-group mt-3">
-              <label>Email address</label>
-              <input
-                hidden
-                name="nome"
-                value={""}
-                onChange={handleOnChange}
-              />
-              <input
-                hidden
-                name="emailPessoal"
-                value={""}
-                onChange={handleOnChange}
-              />
-              <input
-                type="email"
-                className="form-control mt-1"
-                placeholder="Enter email"
-                name="emailInstitucional"
-                value={authForm.emailInstitucional}
-                onChange={handleOnChange}
-              />
-            </div>
-            <div className="form-group mt-3">
-              <label>Password</label>
-              <input
-                type="password"
-                className="form-control mt-1"
-                placeholder="Enter password"
-                name="password"
-                value={authForm.password}
-                onChange={handleOnChange}
-              />
-              <input
-                hidden
-                name="codSiape"
-                value={""}
-                onChange={handleOnChange}
-              />
-              <input
-                hidden
-                name="profileImg"
-                value={""}
-                onChange={handleOnChange}
-              />
-              <input
-                hidden
-                name="nickName"
-                value={""}
-                onChange={handleOnChange}
-              />
-              <input
-                hidden
-                name="role"
-                value={""}
-                onChange={handleOnChange}
-              />
-            </div>
-            <div className="d-grid gap-2 mt-3">
-              <button
-                type="submit"
-                className="btn btn-primary"
-                onClick={handleOnSubmitSignIn}
-              >
-                Submit
-              </button>
-            </div>
-            <p className="text-center mt-2">
-              Forgot <a href="/">password?</a>
-            </p>
-          </div>
-        </form>
-      </div>
-    );
+          </form>
+        </div>
+      );
+    }
   } else {
     return (
       <div className="Auth-form-container">

@@ -9,7 +9,7 @@ function UserProfile() {
   const navigate = useNavigate();
   const [show, setShow] = useState(true);
   const [userForm, setUserForm] = useState({});
-  const { id } = useParams()
+  const { id } = useParams();
  
   useEffect(() => {
     const fetchUserProfile = async () => {

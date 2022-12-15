@@ -1,13 +1,16 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext, createContext } from "react"
 import { Container, Spinner } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import "./BoardList.css"
 import {api} from "../../api/api.js"
+import { AuthContext } from "../../contexts/authContext.js"
 
 export default function BoardList() {
   const [board, setBoard] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+
+  const { loggedUser } = createContext(AuthContext)
 
   useEffect(() => {
     try {
@@ -41,6 +44,13 @@ export default function BoardList() {
     )
   })
 
+  if(!loggedUser){
+    return(
+      <>
+
+      </>
+    )
+  }
   return (
     <Container className="lista-questoes">
       {isLoading && (

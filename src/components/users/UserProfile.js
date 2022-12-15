@@ -8,17 +8,7 @@ import { api } from "../../api/api.js";
 function UserProfile() {
   const navigate = useNavigate();
   const [show, setShow] = useState(true);
-  const [userForm, setUserForm] = useState({
-    nome: "",
-    emailPessoal: "",
-    emailInstitucional: "",
-    password: "",
-    codSiape: "",
-    profileImg: "",
-    nickName:"",
-    role:"",
-    isAdmin: false
-  });
+  const [userForm, setUserForm] = useState({});
 
   const userId = localStorage.getItem("loggedUser")
  

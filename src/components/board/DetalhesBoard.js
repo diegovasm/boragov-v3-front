@@ -1,14 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button, Card, Form, Spinner } from "react-bootstrap";
-import ReactQuill from "react-quill";
+import { Button, Card, Form, Spinner, Modal } from "react-bootstrap";
+import ReactQuill, { Quill } from "react-quill";
 import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../api/api.js";
+import { toast } from "react-toastify";
 import "./DetalhesBoard.css";
 
 export default function DetalhesBoard(){
 
   const [board, setBoard] = useState({});
+  const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -59,17 +61,11 @@ export default function DetalhesBoard(){
 
     if (!formularioAtivo){      
       formQuestao.forEach((element) => {
-        element.removeAttribute("disabled");
+        Quill.enable()
       });
-      conteudoboard.classList.remove("ql-bubble","ql-disabled")
-      conteudoboard.classList.add("ql-snow")
-      conteudoboard.setAttribute("theme", "snow")
     } else {      
       formQuestao.forEach((element) => {
-        element.setAttribute("disabled", "");
-        conteudoboard.classList.remove("ql-snow")
-        conteudoboard.classList.add("ql-bubble","ql-disabled")
-        
+        Quill.enable(false)        
       });
     }
     btnAtualizar.classList.toggle("hide");
@@ -97,9 +93,23 @@ export default function DetalhesBoard(){
     }   
   };
 
-  const deleteQuestao = async () => {
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const deleteBoard = async () => {
     await axios.delete(`board/delete/${id}`);
-    navigate("/questoes");
+    navigate("/board");
+
+    toast.success("Board deletado com sucesso!", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
 
   return (
@@ -112,8 +122,24 @@ export default function DetalhesBoard(){
       {!isLoading && (
         <Card className="text-center">
           <Card.Header as="h5" className="card-header">
-            Questão
+            Board
           </Card.Header>
+          <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Deseja excluir o board?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+         Uma vez excluído não será possível recuperar as informações.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancelar
+          </Button>
+          <Button variant="danger" onClick={() => deleteBoard(id)}>
+            Excluir Board
+          </Button>
+        </Modal.Footer>
+      </Modal>
           <Card.Body>
             <Form.Group className="mb-3" controlId="formQuestao1">
               <Form.Control
@@ -125,7 +151,7 @@ export default function DetalhesBoard(){
                 onChange={handleChange}
               />
                 <Form.Group>
-                    <ReactQuill className="conteudo-board" theme="bubble" value={board.conteudo} readOnly={true} modules={toolbarOptions}>
+                    <ReactQuill className="conteudo-board" theme="snow" value={board.conteudo} readOnly={true} modules={toolbarOptions}>
                     </ReactQuill>
                 </Form.Group>
             </Form.Group>
@@ -151,19 +177,19 @@ export default function DetalhesBoard(){
                 className="btn-atualizar"
                 onClick={mudaFormulario}
               >
-                Atualizar
+                Editar
               </Button>
               <Button
                 variant="danger"
                 className="btn-excluir"
-                onClick={deleteQuestao}
+                onClick={handleShow}
               >
                 Excluir
               </Button>
               <Button
                 variant="danger"
                 className="btn-cancelar hide"
-                onClick={()=>navigate(`/questoes/`)}
+                onClick={()=>navigate(`/board/`)}
               >
                 Cancelar
               </Button>

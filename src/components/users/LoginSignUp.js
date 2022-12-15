@@ -154,8 +154,15 @@ export default function LoginSignUp() {
   }
 
   if (authMode === "signin") {
-    if(!loggedUser){
+    if(loggedUser){
 
+      return(
+        <>
+
+        </>
+      )
+      
+    }
       return (
         <div className="Auth-form-container">
           <form className="Auth-form" >
@@ -241,7 +248,6 @@ export default function LoginSignUp() {
           </form>
         </div>
       );
-    }
   } else {
     return (
       <div className="Auth-form-container">

@@ -42,7 +42,7 @@ export default function App() {
                   <Route path="/board" element={<BoardList />}>
                     {" "}
                   </Route>
-                  <Route path="/detalhes/:id" element={<DetalhesBoard />}>
+                  <Route path="/board/detalhes/:id" element={<DetalhesBoard />}>
                     {" "}
                   </Route>
                   <Route path="/board/cadastrar" element={<CadastrarBoard />}>

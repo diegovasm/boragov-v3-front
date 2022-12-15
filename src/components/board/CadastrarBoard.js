@@ -100,19 +100,8 @@ export default function CadastrarBoard({ apiUrl }) {
                  </ReactQuill>
           </Form.Group>
           <Form.Group>
-          <Form.Label>Resultado Esperado</Form.Label>
-            <Form.Control
-              className="det-board"
-              as="textarea"
-              rows={3}
-              type="text"
-            //   name="resultadoesperado"
-            //   value={form.resultadoesperado}
-            //   onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
             <Form.Label>Tags:</Form.Label>
+            <Form.Group className="tags-div-board">
             <Form.Control
               className="tag-board"
               type="text"
@@ -122,8 +111,9 @@ export default function CadastrarBoard({ apiUrl }) {
             //   onChange={handleChange}
             />
             <Button>
-
+              Adicionar Tag
             </Button>
+            </Form.Group>
           </Form.Group>
 
           <Button

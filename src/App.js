@@ -26,8 +26,9 @@ import { AuthContextComponent } from "./contexts/authContext.js";
 export default function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
-  (localStorage.length === 0) ? setLoggedIn(false): setLoggedIn(true)
-
+  (localStorage.length === 0) ? setLoggedIn(false) : setLoggedIn(true)
+  console.log(localStorage.length)
+  console.log(loggedIn)
   
   return (
     <div className="App">

@@ -74,8 +74,7 @@ export default function NavigationBar() {
       const keyDownHandler = async (event) => {
         if (event.key === "Enter") {
           event.preventDefault();
-            
-          const response = await api.get(`/board/${search}`)
+          const response = await api.get(`/board/buscar/${search}`)
           setSearch(response.data)
           navigate(`/board/${search}`, { replace: true });
         }

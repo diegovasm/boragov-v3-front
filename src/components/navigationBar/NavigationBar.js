@@ -59,14 +59,16 @@ export default function NavigationBar() {
   }
 
   const handleLogout = () => {
-    
-    try {
+
+    localStorage.removeItem("loggedUser");
+    navigate("/");
+    // try {
       
-      localStorage.clear()
-      navigate('/', {replace:true})
-    } catch (error) {
-      console.log(error)
-    }
+    //   localStorage.clear()
+    //   navigate('/', {replace:true})
+    // } catch (error) {
+    //   console.log(error)
+    // }
   }
 
   useEffect(() => {

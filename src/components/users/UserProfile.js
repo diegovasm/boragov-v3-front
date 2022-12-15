@@ -6,9 +6,21 @@ import { api } from "../../api/api.js";
 import { AuthContext } from "../../contexts/authContext.js";
 
 
-function UserProfile({ id, userForm, setUserForm }) {
+function UserProfile() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  const [userForm, setUserForm] = useState({
+    nome: "",
+    emailPessoal: "",
+    emailInstitucional: "",
+    password: "",
+    codSiape: "",
+    profileImg: "",
+    nickName:"",
+    role:"",
+    isAdmin: false
+  });
+
   const { loggedUser } = useContext(AuthContext)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -32,7 +44,7 @@ function UserProfile({ id, userForm, setUserForm }) {
     e.preventDefault();
 
     try {
-      await api.put(`/user/edit/${id}`, userForm);
+      await api.put(`/user/edit/${loggedUser.id}`, userForm);
 
       toast.success("Perfil do usuário atualizado!", {
           position: "top-right",
@@ -134,7 +146,7 @@ function UserProfile({ id, userForm, setUserForm }) {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Papel</Form.Label>
-              <Form.Select name="Papel" onChange={handleChange}>
+              <Form.Select name="role" onChange={handleChange}>
                 <option value="0">Selecione uma opção</option>
                 <option value="user">Usuário</option>
                 <option value="admin">Administrador</option>
@@ -149,40 +161,10 @@ function UserProfile({ id, userForm, setUserForm }) {
                 onChange={handleChange}
               />
             </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Departamento</Form.Label>
-              <Form.Select name="department" onChange={handleChange}>
-                <option value="0">Selecione uma opção</option>
-                <option value="People">People</option>
-                <option value="Front-end">Front-end</option>
-                <option value="Back-end">Back-end</option>
-                <option value="Mobile">Mobile</option>
-                <option value="Financeiro">Financeiro</option>
-                <option value="Marketing">Marketing</option>
-              </Form.Select>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Data de admissão</Form.Label>
-              <Form.Control
-                type="date"
-                placeholder="Insira o valor da remuneração mensal"
-                name="admissionDate"
-                value={userForm.admissionDate}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Status</Form.Label>
-              <Form.Select name="status" onChange={handleChange}>
-                <option value="0">Selecione uma opção</option>
-                <option value="Disponível">Disponível</option>
-                <option value="Alocado">Alocado</option>
-                <option value="De Férias">De Férias</option>
-                <option value="De Licença">De Licença</option>
-              </Form.Select>
-            </Form.Group>
+           
+           
             <Button variant="success" type="submit">
-              Atualizar funcionário
+              Atualizar Usuário
             </Button>
           </Form>
         </Modal.Body>

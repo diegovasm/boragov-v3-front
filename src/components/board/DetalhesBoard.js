@@ -65,14 +65,15 @@ export default function DetalhesBoard(){
       formQuestao.forEach((element) => {
         element.removeAttribute("disabled");
       });
-      setEstadoEditor(false);
       setEstadoTema("snow")
+      setEstadoEditor(false);      
     } else {      
       formQuestao.forEach((element) => {
         element.setAttribute("disabled", "");
       });
-      setEstadoEditor(true);
       setEstadoTema("bubble")
+      setEstadoEditor(true);
+      
     }
     btnAtualizar.classList.toggle("hide");
     btnSalvar.classList.toggle("hide");

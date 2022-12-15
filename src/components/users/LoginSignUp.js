@@ -65,6 +65,7 @@ export default function LoginSignUp() {
             })
 
             navigate("/board")
+            window.location.reload()
         } catch(error){
             console.log(error)
 

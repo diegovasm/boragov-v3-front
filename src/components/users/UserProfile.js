@@ -3,7 +3,6 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../../api/api.js";
-import { AuthContext } from "../../contexts/authContext.js";
 
 
 function UserProfile() {
@@ -21,16 +20,16 @@ function UserProfile() {
     isAdmin: false
   });
 
-  const { loggedUser } = useContext(AuthContext)
+  const userId = localStorage.getItem("loggedUser")
  
   useEffect(() => {
     const fetchUserProfile = async () => {
-      const response = await api.get(`/user/${loggedUser.id}`);
+      const response = await api.get(`/user/${userId}`);
       setUserForm(response.data);
     };
 
     fetchUserProfile();
-  }, [loggedUser.id, setUserForm]);
+  }, [userId, setUserForm]);
 
   const handleChange = (e) => {
   
@@ -47,7 +46,7 @@ function UserProfile() {
     e.preventDefault();
     setShow(false)
     try {
-      await api.put(`/user/edit/${loggedUser.id}`, userForm);
+      await api.put(`/user/edit/${userId}`, userForm);
 
       toast.success("Perfil do usuário atualizado!", {
           position: "top-right",

@@ -74,7 +74,7 @@ export default function NavigationBar() {
       const keyDownHandler = async (event) => {
         if (event.key === "Enter" && event.target === "input.me-4.form-control") {
           event.preventDefault();
-          const response = await api.get(`/board/buscar/${search}`)
+          const response = await api.get(`/board/${search}`)
           setSearch(response.data)
           navigate(`/board/${search}`, { replace: true });
         }

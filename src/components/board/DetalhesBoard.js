@@ -15,7 +15,7 @@ export default function DetalhesBoard(){
   const { id } = useParams();
   const navigate = useNavigate();
   const [formularioAtivo, setFormularioAtivo] = useState(false);
-  const editor = new Quill('.editor')
+  const editor = new Quill('editor')
   const toolbarOptions = {toolbar: [
     [{font: []}, { size: [ 'small', false, 'large', 'huge' ]}],
     [{ align: [] }, 'direction' ],

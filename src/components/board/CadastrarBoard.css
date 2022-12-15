@@ -14,8 +14,11 @@
 .det-board {
   width: 99.5%;
 }
+.tags-div-board{
+  display: flex;
+}
 .tag-board{
-  width: 99.5%;
+  width: 80%;
 } 
 .titulo-board{
   width: 99.5%;

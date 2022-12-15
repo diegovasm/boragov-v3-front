@@ -19,7 +19,6 @@ import UserProfile from "./components/users/UserProfile.js";
 import LoginSignUp from "../src/components/users/LoginSignUp.js";
 
 import ErrorPage from "../src/components/error/ErrorPage.js";
-import { useState } from "react";
 import { Container, ToastContainer } from "react-bootstrap";
 import { AuthContextComponent } from "./contexts/authContext.js";
 

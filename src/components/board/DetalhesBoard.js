@@ -15,7 +15,6 @@ export default function DetalhesBoard(){
   const { id } = useParams();
   const navigate = useNavigate();
   const [formularioAtivo, setFormularioAtivo] = useState(false);
-  const editor = new Quill('editor')
   const toolbarOptions = {toolbar: [
     [{font: []}, { size: [ 'small', false, 'large', 'huge' ]}],
     [{ align: [] }, 'direction' ],
@@ -58,17 +57,18 @@ export default function DetalhesBoard(){
     let btnExcluir = document.querySelector(".btn-excluir");
     let btnCancelar = document.querySelector(".btn-cancelar");
     let btnVoltar = document.querySelector(".btn-voltar");
+    const editor = new Quill('editor')
 
     if (!formularioAtivo){      
       formQuestao.forEach((element) => {
         element.removeAttribute("disabled");
       });
-      editor.enable()
+      editor.disable(false)
     } else {      
       formQuestao.forEach((element) => {
         element.setAttribute("disabled", "");
       });
-      editor.disable()
+      editor.disable(true)
     }
     btnAtualizar.classList.toggle("hide");
     btnSalvar.classList.toggle("hide");

@@ -15,8 +15,10 @@ export default function BuscaQuestoes() {
     useEffect(() => {
         try {
             const fetchQuestoes = async () => {
+                console.log(busca)
                 const response = await api.get(`/board/buscar/${busca}`)
                 setBoards(response.data)
+                console.log(boards)
                 setIsLoading(false)
             }
 

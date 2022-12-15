@@ -4,4 +4,9 @@
 
 .principal{
   display: flex;
+  justify-content: center;
+}
+
+.Auth-form-container{
+  margin-top: 10vh;
 }

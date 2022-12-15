@@ -33,10 +33,7 @@ export default function CadastrarBoard({ apiUrl }) {
   }
 
   const handleChangeQuill = async (content, delta, source, editor) => {
-
     await setForm({...form, conteudo: editor.getContents()}) 
-    console.log(form)
-        
   }
 
   // useEffect(() => {
@@ -124,6 +121,9 @@ export default function CadastrarBoard({ apiUrl }) {
             //   value={form.tags}
             //   onChange={handleChange}
             />
+            <Button>
+
+            </Button>
           </Form.Group>
 
           <Button

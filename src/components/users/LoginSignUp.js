@@ -24,6 +24,19 @@ export default function LoginSignUp() {
 
   const changeAuthMode = () => {
     setAuthMode(authMode === "signin" ? "signup" : "signin")
+    setAuthForm(
+        {
+          nome: "",
+          emailPessoal: "",
+          emailInstitucional: "",
+          password: "",
+          codSiape: "",
+          profileImg: "",
+          nickName:"",
+          role:"",
+          isAdmin: false
+        }
+    )
   }
 
   const handleOnChange = (e) => {

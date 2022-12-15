@@ -6,18 +6,16 @@ import logo from "../../image/boraGOV.png"
 import Dropdown from "react-bootstrap/Dropdown"
 import { Button, DropdownButton } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect } from "react"
 import { api } from "../../api/api.js"
-import { AuthContext } from "../../contexts/authContext.js";
 
-export default function NavigationBar({setLogin}) {
+export default function NavigationBar() {
   const [search, setSearch] = useState("")
   const navigate = useNavigate()
 
   const handleOnSearch = (e) => {
 
     try{
-
         setSearch(e.target.value);
     }catch(error){
         console.log(error)
@@ -25,7 +23,12 @@ export default function NavigationBar({setLogin}) {
   }
 
   const handleOnQuestion = () => {
-    navigate('/board/cadastrar', { replace: true })
+    try {
+      
+      navigate('/board/cadastrar', { replace: true })
+    } catch (error) {
+      console.log(error)
+    }
   }
   const handleOnImageClick = () => {
 
@@ -33,13 +36,18 @@ export default function NavigationBar({setLogin}) {
       
         navigate('/board', { replace: true })
     } catch (error) {
-        
+        console.log(error)
     }
   }
 
   const handlePerfil = () => {
 
-    navigate('/user/profile', { replace: true })
+    try {
+      
+      navigate('/user/profile', { replace: true })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const handleConfigs = () => {
@@ -49,8 +57,13 @@ export default function NavigationBar({setLogin}) {
 
   const handleLogout = () => {
     
-    localStorage.clear()
-    navigate('/', {replace:true})
+    try {
+      
+      localStorage.clear()
+      navigate('/', {replace:true})
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   useEffect(() => {

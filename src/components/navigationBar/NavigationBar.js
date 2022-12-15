@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar"
 import logo from "../../image/boraGOV.png"
 import Dropdown from "react-bootstrap/Dropdown"
 import { Button, DropdownButton } from "react-bootstrap"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useState, useEffect, useContext } from "react"
 import { api } from "../../api/api.js"
 import { AuthContext } from "../../contexts/authContext.js"
@@ -13,7 +13,7 @@ import { AuthContext } from "../../contexts/authContext.js"
 export default function NavigationBar() {
   const [search, setSearch] = useState("")
   const navigate = useNavigate()
-
+  const { id } = useParams()
   const { loggedUser} = useContext(AuthContext)
  
   const handleOnSearch = (e) => {
@@ -47,7 +47,7 @@ export default function NavigationBar() {
 
     try {
       
-      navigate('/user/profile', { replace: true })
+      navigate(`/user/profile/${id}`, { replace: true })
     } catch (error) {
       console.log(error)
     }

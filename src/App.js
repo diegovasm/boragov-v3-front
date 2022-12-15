@@ -35,7 +35,7 @@ export default function App() {
                   <Route path="/" element={<LoginSignUp />}>
                     {" "}
                   </Route>
-                  <Route path="/user/profile" element={<UserProfile />}>
+                  <Route path="/user/profile/:id" element={<UserProfile />}>
                     {" "}
                   </Route>
                   <Route path="/board" element={<BoardList />}>

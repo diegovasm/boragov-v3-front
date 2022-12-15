@@ -1,24 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../../api/api.js";
+import { AuthContext } from "../../contexts/authContext.js";
+
 
 function UserProfile({ id, userForm, setUserForm }) {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-
+  const { loggedUser } = useContext(AuthContext)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
-      const response = await api.get(`/user/${id}`);
+      const response = await api.get(`/user/${loggedUser.id}`);
       setUserForm(response.data);
     };
 
     fetchUserProfile();
-  }, [id, setUserForm]);
+  }, [loggedUser.id, setUserForm]);
 
   const handleChange = (e) => {
   

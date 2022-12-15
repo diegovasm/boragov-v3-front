@@ -19,22 +19,30 @@ export default function TagList() {
 
   return (
     <div className="cardlist">
-      <Card style={{ width: "18rem",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    flexDirection: "row",
-                     marginBottom: "30px", }}>
-        <Card.Body>
-          {apiData.map((data) => {
-            return (
-              <>
-                <Card.Title style= {{color: "#4682B4" }}>{data.nome}</Card.Title>
-                <Card.Text> {data.descricao}</Card.Text>
-              </>
-            );
-          })}
-        </Card.Body>
+      <Card >
+        <div className='' style={{
+          display: "flex",
+          alignItems: "center",
+          flexWrap: "wrap",
+          justifyContent: "space-between",
+          flexDirection: "row",
+          marginBottom: "30px",
+        }}>
+          <Card.Body>
+            {apiData.map((data) => {
+              return (
+                <>
+                  <Card.Title style={{
+                    color: "#4682B4",
+                    backgroundColor: "lightblue",
+                    fontWeight: "bold"
+                  }}>{data.nome}</Card.Title>
+                  <Card.Text> {data.descricao}</Card.Text>
+                </>
+              );
+            })}
+          </Card.Body>
+        </div>
       </Card>
     </div>
   );

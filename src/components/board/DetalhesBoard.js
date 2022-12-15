@@ -25,7 +25,7 @@ export default function DetalhesBoard(){
     ['link', 'image','code-block'],
     ['clean']
   ]}
-  let estadoEditor = true;
+  const [estadoEditor, setEstadoEditor] = useState(true)
 
   const incrementaView = () => {
     const clone = board;
@@ -64,12 +64,12 @@ export default function DetalhesBoard(){
       formQuestao.forEach((element) => {
         element.removeAttribute("disabled");
       });
-      estadoEditor = false;
+      setEstadoEditor(false);
     } else {      
       formQuestao.forEach((element) => {
         element.setAttribute("disabled", "");
       });
-      estadoEditor = true;
+      setEstadoEditor(true);
     }
     btnAtualizar.classList.toggle("hide");
     btnSalvar.classList.toggle("hide");

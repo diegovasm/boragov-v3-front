@@ -15,7 +15,7 @@ export default function BuscaQuestoes() {
     useEffect(() => {
         try {
             const fetchQuestoes = async () => {
-                const response = await api.get(`/board/${busca}`)
+                const response = await api.get(`/board/busca/${busca}`)
                 setBoards(response.data)
                 setIsLoading(false)
             }

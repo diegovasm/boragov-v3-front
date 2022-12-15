@@ -1,0 +1,55 @@
+.card-detalhe{
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    margin: 0 5vw;
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 15px;
+    background-color: rgb(241, 241, 241);
+}
+
+.card-header{
+    background-color:rgb(241, 241, 241);
+    text-align: center;
+}
+.det-titulo{
+    padding-left: 0.5vw;
+    border: 1px solid rgb(224, 224, 224);
+    background-color: white;
+    border-radius: 10px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.conteudo-board{
+    padding-left: 0.5vw;
+    border: 1px solid rgb(224, 224, 224);
+    min-height: 30vh;
+    background-color: white;
+    border-radius: 10px;
+    text-align: left;
+    overflow:auto; 
+}
+.det-mais-info{
+    font-size: smaller;
+    margin: 0 1vw;
+    text-align: left;
+}
+
+.det-mais-info>button{
+    margin: 0.5vw;
+    width: 7rem;
+}
+.det-tags{
+    color:steelblue;
+}
+.det-footer{
+    text-align: center;
+}
+.det-footer-buttons>button{
+    margin: 0.5vw;
+    width: 7rem;
+}
+.hide{
+    display:none
+}

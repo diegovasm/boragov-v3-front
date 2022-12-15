@@ -1,0 +1,35 @@
+.item-board{
+    display: flex;
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+a{
+    text-decoration: none;
+}
+.item-board:hover{
+    background-color: rgb(255, 252, 248);
+    cursor: pointer;
+}
+.indicadores-board{
+    font-size: 0.6rem;
+    color: gray;
+    margin: 0.5vw;
+    width: 7vw;
+}
+.indicadores-board>p{
+    margin-bottom: 0.5rem;
+}
+.resumo-board{
+    margin: 0.5vw;
+}
+.resumo-board>h5{
+    color: rgb(34, 85, 143);
+}
+.tags{
+    color: cornflowerblue;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+ 
+}
+.questoes-spinner{
+    text-align: center;
+}

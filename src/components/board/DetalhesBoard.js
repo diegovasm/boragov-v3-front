@@ -25,6 +25,7 @@ export default function DetalhesBoard(){
     ['link', 'image','code-block'],
     ['clean']
   ]}
+  let estadoEditor = true;
 
   const incrementaView = () => {
     const clone = board;
@@ -57,18 +58,18 @@ export default function DetalhesBoard(){
     let btnExcluir = document.querySelector(".btn-excluir");
     let btnCancelar = document.querySelector(".btn-cancelar");
     let btnVoltar = document.querySelector(".btn-voltar");
-    const quill = new Quill('editor')
+    
 
     if (!formularioAtivo){      
       formQuestao.forEach((element) => {
         element.removeAttribute("disabled");
       });
-      quill.disable(false)
+      estadoEditor = false;
     } else {      
       formQuestao.forEach((element) => {
         element.setAttribute("disabled", "");
       });
-      quill.disable(true)
+      estadoEditor = true;
     }
     btnAtualizar.classList.toggle("hide");
     btnSalvar.classList.toggle("hide");
@@ -153,7 +154,7 @@ export default function DetalhesBoard(){
                 onChange={handleChange}
               />
                 <Form.Group>
-                    <ReactQuill className="editor" theme="snow" value={board.conteudo} readOnly={true} modules={toolbarOptions}>
+                    <ReactQuill className="editor"  theme="snow" value={board.conteudo} readOnly={estadoEditor} modules={toolbarOptions}>
                     </ReactQuill>
                 </Form.Group>
             </Form.Group>

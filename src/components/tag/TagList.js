@@ -29,8 +29,8 @@ export default function TagList() {
                 alignItems: "center",
                 flexWrap: "wrap",
                 justifyContent: "space-between",
-                flexDirection: "row",
                 marginBottom: "30px",
+                maxWidth: "50%",
               }}
             >
               <Card.Body>

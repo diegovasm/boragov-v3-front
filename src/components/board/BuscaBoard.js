@@ -14,15 +14,15 @@ export default function BuscaQuestoes() {
 
     useEffect(() => {
         try {
-            const fetchQuestoes = async () => {
+            const fetchBoards = async () => {
                 console.log(busca)
                 const response = await api.get(`/board/buscar/${busca}`)
+                console.log(response.data)
                 setBoards(response.data)
-                console.log(boards)
                 setIsLoading(false)
             }
 
-            fetchQuestoes()
+            fetchBoards()
 
         } catch (error) {
 
@@ -32,22 +32,17 @@ export default function BuscaQuestoes() {
 
           const renderBoards = boards.filter((board) => {
 
-            const stringTags = board.tags.toString()
+            //const stringTags = board.tags.toString()
             const escopoBusca = ((board.titulo).toLowerCase())
-                                .concat((board.problema).toLowerCase())
-                                .concat((board.resultadoesperado).toLowerCase())
-                                .concat(stringTags.toLocaleLowerCase())
+                                .concat((board.conteudo).toLowerCase())
+                                .concat((board.respostas.resContent).toLowerCase())
+                                //.concat(stringTags.toLocaleLowerCase())
            return (
 
                 escopoBusca.includes(busca.toLocaleLowerCase())
              
            )
-          }).map((board) => {
-            const renderTags = board.tags.map((item, index) => {
-                return (
-                    <span  id={index}>{`${item} `}</span>
-                )
-            })
+           }).map((board) => {
               return (
                   <Link to={`/board/detalhes/${board._id}`} >
                       <div className="item-board" id={board._id}>
@@ -56,10 +51,10 @@ export default function BuscaQuestoes() {
                               <p>{board.respostas} respostas</p>
                               <p>{board.views} visualizações</p>
                           </div>
-                          <div className="resumo-board">
+                          {/* <div className="resumo-board">
                               <h3>{board.titulo}</h3>
                               <p className="tags"> {renderTags} </p>
-                          </div>
+                          </div> */}
                       </div>
                   </Link>
                  

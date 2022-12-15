@@ -4,7 +4,7 @@ import { toast } from "react-toastify"
 import { AuthContext } from "../../contexts/authContext.js"
 import { api } from "../../api/api.js"
 
-export default function LoginSignUp() {
+export default function LoginSignUp({setLoggedIn}) {
 
   const [authMode, setAuthMode] = useState("signin")
   const { setLoggedUser } = useContext(AuthContext)
@@ -51,20 +51,21 @@ export default function LoginSignUp() {
             const response = await api.post("/user/login", authForm)
             setLoggedUser({...response.data})
             localStorage.setItem("loggedUser", JSON.stringify(response.data))
-
-            navigate("/board")
-
+            setLoggedIn(true)
+            
             toast.success("Login realizado com sucesso", {
-                
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
+              
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
             })
+            
+            navigate("/board")
         } catch(error){
             console.log(error)
 

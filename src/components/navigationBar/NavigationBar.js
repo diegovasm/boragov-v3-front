@@ -61,7 +61,7 @@ export default function NavigationBar() {
   const handleLogout = () => {
 
     localStorage.removeItem("loggedUser");
-    navigate("/");
+    navigate("/", window.location.reload(true));
     // try {
       
     //   localStorage.clear()

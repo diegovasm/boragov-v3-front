@@ -29,49 +29,94 @@ export default function App() {
 
   let loggedIn = (localStorage.length === 0) ? false : true
   
-  
-  return (
+  if(loggedIn){
+
+      return (
+        <div className="App">
+          <ToastContainer />
+          <AuthContextComponent>
+            <NavigationBar  />
+            <Container className="principal ms-0">
+            <MenuLateral />
+              <Routes>
+                <Route path="/" element={<LoginSignUp />}>
+                  {" "}
+                </Route>
+                <Route path="/user/perfil" element={<UserProfile />}>
+                  {" "}
+                </Route>
+                <Route path="/board" element={<BoardList />}>
+                  {" "}
+                </Route>
+                <Route path="/detalhes/:id" element={<DetalhesBoard />}>
+                  {" "}
+                </Route>
+                <Route path="/board/cadastrar" element={<CadastrarBoard />}>
+                  {" "}
+                </Route>
+                <Route path="/board/:busca" element={<BuscaBoard />}>
+                  {" "}
+                </Route>
+                <Route path="/orgao" element={<OrgaoList />}>
+                  {" "}
+                </Route>
+                <Route path="/tag" element={<TagList />}>
+                  {" "}
+                </Route>
+                <Route path="/user" element={<UserList />}>
+                  {" "}
+                </Route>
+                <Route path="*" element={<ErrorPage />}>
+                  {" "}
+                </Route>
+              </Routes>
+            </Container>
+          </AuthContextComponent>
+        </div>
+      );
+  }else{
+
+    return(
     <div className="App">
-      <ToastContainer />
-      <AuthContextComponent>
-        {loggedIn && <NavigationBar  />}
-        <Container className="principal ms-0">
-        {loggedIn && <MenuLateral />}
-        <Routes>
-          <Route path="/" element={<LoginSignUp />}>
-            {" "}
-          </Route>
-          <Route path="/user/perfil" element={<UserProfile />}>
-            {" "}
-          </Route>
-          <Route path="/board" element={<BoardList />}>
-            {" "}
-          </Route>
-          <Route path="/detalhes/:id" element={<DetalhesBoard />}>
-            {" "}
-          </Route>
-          <Route path="/board/cadastrar" element={<CadastrarBoard />}>
-            {" "}
-          </Route>
-          <Route path="/board/:busca" element={<BuscaBoard />}>
-            {" "}
-          </Route>
-          <Route path="/orgao" element={<OrgaoList />}>
-            {" "}
-          </Route>
-          <Route path="/tag" element={<TagList />}>
-            {" "}
-          </Route>
-          <Route path="/user" element={<UserList />}>
-            {" "}
-          </Route>
-          <Route path="*" element={<ErrorPage />}>
-            {" "}
-          </Route>
-        </Routes>
-        </Container>
-      </AuthContextComponent>
-    </div>
-  );
+          <ToastContainer />
+          <AuthContextComponent>
+            <Container className="principal ms-0">
+              <Routes>
+                <Route path="/" element={<LoginSignUp />}>
+                  {" "}
+                </Route>
+                <Route path="/user/perfil" element={<UserProfile />}>
+                  {" "}
+                </Route>
+                <Route path="/board" element={<BoardList />}>
+                  {" "}
+                </Route>
+                <Route path="/detalhes/:id" element={<DetalhesBoard />}>
+                  {" "}
+                </Route>
+                <Route path="/board/cadastrar" element={<CadastrarBoard />}>
+                  {" "}
+                </Route>
+                <Route path="/board/:busca" element={<BuscaBoard />}>
+                  {" "}
+                </Route>
+                <Route path="/orgao" element={<OrgaoList />}>
+                  {" "}
+                </Route>
+                <Route path="/tag" element={<TagList />}>
+                  {" "}
+                </Route>
+                <Route path="/user" element={<UserList />}>
+                  {" "}
+                </Route>
+                <Route path="*" element={<ErrorPage />}>
+                  {" "}
+                </Route>
+              </Routes>
+            </Container>
+          </AuthContextComponent>
+        </div>
+      );
+  }
 }
 

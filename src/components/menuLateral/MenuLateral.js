@@ -32,7 +32,7 @@ export default function MenuLateral() {
     navigate('/orgao')
   }
   if(!loggedUser){
-    return(navigate('/'))
+    return(<></>)
   }
   return (
 

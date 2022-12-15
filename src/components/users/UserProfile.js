@@ -108,7 +108,7 @@ function UserProfile() {
               <Form.Control
                 type="password"
                 name="password"
-                value={userForm.password}
+                value={""}
                 onChange={handleChange}
               />
             </Form.Group>

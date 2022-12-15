@@ -22,17 +22,7 @@ export default function TagList() {
       {apiData.map((data) => {
         return (
           <Card>
-            <div
-              className=""
-              style={{
-                display: "flex",
-                alignItems: "center",
-                flexWrap: "wrap",
-                justifyContent: "space-between",
-                flexDirection: "row",
-                marginBottom: "30px",
-              }}
-            >
+            <div className="" style={{}}>
               <Card.Body>
                 <Card.Title
                   style={{

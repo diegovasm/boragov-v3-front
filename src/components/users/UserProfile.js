@@ -37,6 +37,9 @@ function UserProfile() {
 
     setUserForm({ ...userForm, [e.target.name]: e.target.value });
   };
+  const handleClose = () =>{
+    setShow(false)
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,7 +78,7 @@ function UserProfile() {
     <div>
 
       <Modal show={show}>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton={handleClose}>
           <Modal.Title>Editar Perfil do Usuário</Modal.Title>
         </Modal.Header>
         <Modal.Body>

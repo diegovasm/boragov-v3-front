@@ -27,9 +27,10 @@ export default function DetalhesBoard(){
   const incrementaView = () => {
     const clone = board;
     delete clone._id;
+    if(!clone.visualizacoes) clone.visualizacoes = 0
     clone.visualizacoes++;
     api.put(`board/edit/${id}`, clone);
-    navigate("/questoes");
+    navigate("/board");
   };
 
   useEffect(() => {
@@ -49,6 +50,7 @@ export default function DetalhesBoard(){
 
   const mudaFormulario = () => {
     let formQuestao = document.querySelectorAll(".formQuestao");
+    let conteudoboard = document.querySelector(".conteudo-board")
     let btnAtualizar = document.querySelector(".btn-atualizar");
     let btnSalvar = document.querySelector(".btn-salvar");
     let btnExcluir = document.querySelector(".btn-excluir");
@@ -59,9 +61,13 @@ export default function DetalhesBoard(){
       formQuestao.forEach((element) => {
         element.removeAttribute("disabled");
       });
+      conteudoboard.setAttribute("readOnly", false)
+      conteudoboard.setAttribute("theme", "snow")
     } else {      
       formQuestao.forEach((element) => {
         element.setAttribute("disabled", "");
+        conteudoboard.setAttribute("theme", "bubble")
+        conteudoboard.setAttribute("readOnly", true)
       });
     }
     btnAtualizar.classList.toggle("hide");
@@ -117,7 +123,7 @@ export default function DetalhesBoard(){
                 onChange={handleChange}
               />
                 <Form.Group>
-                    <ReactQuill theme="snow" value={board.conteudo} readOnly={true} modules={toolbarOptions}>
+                    <ReactQuill className="conteudo-board" theme="bubble" value={board.conteudo} readOnly={true} modules={toolbarOptions}>
                     </ReactQuill>
                 </Form.Group>
             </Form.Group>

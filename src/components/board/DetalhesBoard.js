@@ -61,7 +61,7 @@ export default function DetalhesBoard(){
       formQuestao.forEach((element) => {
         element.removeAttribute("disabled");
       });
-      conteudoboard.classList.remove("ql-buble","ql-disabled")
+      conteudoboard.classList.remove("ql-bubble","ql-disabled")
       conteudoboard.classList.add("ql-snow")
       conteudoboard.setAttribute("theme", "snow")
     } else {      

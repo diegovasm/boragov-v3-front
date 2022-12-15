@@ -84,6 +84,10 @@ export default function DetalhesBoard(){
     setBoard({ ...board, [e.target.name]: e.target.value });
   };
 
+  const handleChangeQuill = async (content, delta, source, editor) => {
+    await setBoard({...board, conteudo: editor.getContents()}) 
+  }
+
   const handleSubmit = async (e) => {   
     mudaFormulario();
     e.preventDefault();    
@@ -154,7 +158,7 @@ export default function DetalhesBoard(){
                 onChange={handleChange}
               />
                 <Form.Group>
-                    <ReactQuill className="editor"  theme="snow" value={board.conteudo} readOnly={estadoEditor} modules={toolbarOptions}>
+                    <ReactQuill className="editor" onChange={handleChangeQuill}  theme="snow" value={board.conteudo} readOnly={estadoEditor} modules={toolbarOptions}>
                     </ReactQuill>
                 </Form.Group>
             </Form.Group>

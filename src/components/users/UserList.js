@@ -44,9 +44,9 @@ function UserList() {
                   {data.nome}
                 </Card.Title>
                 <Card.Text>
-                  <div>{data.image}</div>
-                  <div> {data.nickName}</div>
+                  <div>{data.profileImg}</div>
                   <div> {data.emailInstitucional}</div>
+                  <div> {data.nickName}</div>
                 </Card.Text>
               </Card.Body>
             </div>

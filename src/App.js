@@ -29,13 +29,13 @@ export default function App() {
 
   (localStorage.length === 0) ? setLoggedIn(false) : setLoggedIn(true)
   
-  if(!loggedIn){
-
-    return(
-      <div className="App">
+        return (
+          <div className="App">
             <ToastContainer />
             <AuthContextComponent>
-              <Container className="principal">
+              <NavigationBar />
+              <Container className="principal ms-0">
+              <MenuLateral />
                 <Routes>
                   <Route path="/" element={<LoginSignUp />}>
                     {" "}
@@ -72,52 +72,5 @@ export default function App() {
             </AuthContextComponent>
           </div>
         );
-    }else{
-        
-        return (
-          <div className="App">
-            <ToastContainer />
-            <AuthContextComponent>
-              <NavigationBar />
-              <Container className="principal ms-0">
-              <MenuLateral />
-                <Routes>
-                  <Route path="/" element={<LoginSignUp setLoggedIn={setLoggedIn}/>}>
-                    {" "}
-                  </Route>
-                  <Route path="/user/perfil" element={<UserProfile />}>
-                    {" "}
-                  </Route>
-                  <Route path="/board" element={<BoardList />}>
-                    {" "}
-                  </Route>
-                  <Route path="/detalhes/:id" element={<DetalhesBoard />}>
-                    {" "}
-                  </Route>
-                  <Route path="/board/cadastrar" element={<CadastrarBoard />}>
-                    {" "}
-                  </Route>
-                  <Route path="/board/:busca" element={<BuscaBoard />}>
-                    {" "}
-                  </Route>
-                  <Route path="/orgao" element={<OrgaoList />}>
-                    {" "}
-                  </Route>
-                  <Route path="/tag" element={<TagList />}>
-                    {" "}
-                  </Route>
-                  <Route path="/user" element={<UserList />}>
-                    {" "}
-                  </Route>
-                  <Route path="*" element={<ErrorPage />}>
-                    {" "}
-                  </Route>
-                </Routes>
-              </Container>
-            </AuthContextComponent>
-          </div>
-        );
-
-    }
 }
 

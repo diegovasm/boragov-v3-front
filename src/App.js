@@ -23,49 +23,47 @@ import { Container, ToastContainer } from "react-bootstrap";
 import { AuthContextComponent } from "./contexts/authContext.js";
 
 export default function App() {
-  
-        return (
-          <div className="App">
-            <ToastContainer />
-            <AuthContextComponent>
-              <NavigationBar />
-              <Container className="principal ms-0">
-              <MenuLateral />
-                <Routes>
-                  <Route path="/" element={<LoginSignUp />}>
-                    {" "}
-                  </Route>
-                  <Route path="/user/profile/:id" element={<UserProfile />}>
-                    {" "}
-                  </Route>
-                  <Route path="/board" element={<BoardList />}>
-                    {" "}
-                  </Route>
-                  <Route path="/board/detalhes/:id" element={<DetalhesBoard />}>
-                    {" "}
-                  </Route>
-                  <Route path="/board/cadastrar" element={<CadastrarBoard />}>
-                    {" "}
-                  </Route>
-                  <Route path="/board/:busca" element={<BuscaBoard />}>
-                    {" "}
-                  </Route>
-                  <Route path="/orgao" element={<OrgaoList />}>
-                    {" "}
-                  </Route>
-                  <Route path="/tag" element={<TagList />}>
-                    {" "}
-                  </Route>
-                  <Route path="/user" element={<UserList />}>
-                    {" "}
-                  </Route>
-                  <Route path="*" element={<ErrorPage />}>
-                    {" "}
-                  </Route>
-                </Routes>
-              </Container>
-            </AuthContextComponent>
-          </div>
-        );
+  return (
+    <div className="App">
+      <ToastContainer />
+      <AuthContextComponent>
+        <NavigationBar />
+        <Container className="principal">
+          <MenuLateral />
+          <Routes>
+            <Route path="/" element={<LoginSignUp />}>
+              {" "}
+            </Route>
+            <Route path="/user/profile/:id" element={<UserProfile />}>
+              {" "}
+            </Route>
+            <Route path="/board" element={<BoardList />}>
+              {" "}
+            </Route>
+            <Route path="/board/detalhes/:id" element={<DetalhesBoard />}>
+              {" "}
+            </Route>
+            <Route path="/board/cadastrar" element={<CadastrarBoard />}>
+              {" "}
+            </Route>
+            <Route path="/board/:busca" element={<BuscaBoard />}>
+              {" "}
+            </Route>
+            <Route path="/orgao" element={<OrgaoList />}>
+              {" "}
+            </Route>
+            <Route path="/tag" element={<TagList />}>
+              {" "}
+            </Route>
+            <Route path="/user" element={<UserList />}>
+              {" "}
+            </Route>
+            <Route path="*" element={<ErrorPage />}>
+              {" "}
+            </Route>
+          </Routes>
+        </Container>
+      </AuthContextComponent>
+    </div>
+  );
 }
-

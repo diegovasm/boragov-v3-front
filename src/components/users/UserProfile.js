@@ -134,7 +134,7 @@ function UserProfile() {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Papel</Form.Label>
-              <Form.Select name="role" value={userForm.role || ""} onChange={handleChange}>
+              <Form.Select name="role" onChange={handleChange}>
                 <option value="0">Selecione uma opção</option>
                 <option value="user">Usuário</option>
                 <option value="admin">Administrador</option>

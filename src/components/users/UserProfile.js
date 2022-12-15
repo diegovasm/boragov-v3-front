@@ -78,7 +78,7 @@ function UserProfile() {
     <div>
 
       <Modal show={show}>
-        <Modal.Header closeButton={handleClose}>
+        <Modal.Header closeButton onClick={handleClose}>
           <Modal.Title>Editar Perfil do Usuário</Modal.Title>
         </Modal.Header>
         <Modal.Body>

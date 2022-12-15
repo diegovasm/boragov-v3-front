@@ -30,7 +30,7 @@ export default function App() {
             <ToastContainer />
             <AuthContextComponent>
               <NavigationBar />
-              <Container className="principal m-auto">
+              <Container className="principal ms-0">
               <MenuLateral />
                 <Routes>
                   <Route path="/" element={<LoginSignUp />}>

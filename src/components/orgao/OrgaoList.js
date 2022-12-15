@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { api } from "../../api/api.js";
 
 function OrgaoList() {
-  const [ orgaos, setOrgaos ] = useState([]);
+  const [orgaos, setOrgaos] = useState([]);
 
   useEffect(() => {
     try {
-        const fetchOrgaos = async () => {
+      const fetchOrgaos = async () => {
         const response = await api.get("/orgao");
         setOrgaos(response.data);
       };
@@ -19,21 +19,41 @@ function OrgaoList() {
   }, []);
 
   return (
-    <div className="cardlist">
-      <Card style={{ width: "18rem" }}>
-        <Card.Body>
-          {orgaos.map((data) => {
-            return (
-              <>
-                <Card.Title>{data.nome}</Card.Title>
-                <Card.Text>{data.image}</Card.Text>
-                <Card.Text> {data.localizacao}</Card.Text>
-                <Card.Text> {data.descricao}</Card.Text>
-              </>
-            );
-          })}
-        </Card.Body>
-      </Card>
+    <div
+      className="cardlist"
+      style={{
+        display: "flex",
+        justifyContent: "spaceBetween",
+        gap: "1rem",
+        flexWrap: "wrap",
+        marginLeft: "1rem",
+      }}
+    >
+      {orgaos.map((data) => {
+        return (
+          <Card style={{ width: "48%" }}>
+            <div className="">
+              <Card.Body>
+                <Card.Title
+                  style={{
+                    color: "#4682B4",
+                    backgroundColor: "lightblue",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {data.nome}
+                </Card.Title>
+                <Card.Text>
+                  <div>{data.nome}</div>
+                  <div>{data.image}</div>
+                  <div> {data.localizacao}</div>
+                  <div> {data.descricao}</div>
+                </Card.Text>
+              </Card.Body>
+            </div>
+          </Card>
+        );
+      })}
     </div>
   );
 }

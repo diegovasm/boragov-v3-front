@@ -26,16 +26,16 @@ import { AuthContextComponent } from "./contexts/authContext.js";
 export default function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
-
+  (localStorage.length === 0) ? setLoggedIn(false): setLoggedIn(true)
 
   
   return (
     <div className="App">
       <ToastContainer />
       <AuthContextComponent>
-        {localStorage.length && <NavigationBar  />}
+        {loggedIn && <NavigationBar  />}
         <Container className="principal ms-0">
-        {localStorage.length && <MenuLateral />}
+        {loggedIn && <MenuLateral />}
         <Routes>
           <Route path="/" element={<LoginSignUp />}>
             {" "}

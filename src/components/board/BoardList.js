@@ -26,6 +26,7 @@ export default function BoardList() {
  
 
   const renderBoards = board.map((board) => {
+    console.log(board)
     return (
       <Link to={`/board/detalhes/${board._id}`}>
         <div className="item-questao" id={board._id}>

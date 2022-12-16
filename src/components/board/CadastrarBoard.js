@@ -73,6 +73,7 @@ export default function CadastrarBoard({ apiUrl }) {
 
   const handleAdicionaTags = () => {
     setForm({ ...form, tags: tagsIds});
+    handleClose();
   };
 
   const handleClose = () => setShow(false);
@@ -80,7 +81,6 @@ export default function CadastrarBoard({ apiUrl }) {
 
   const handleChangeTags = (tagId) => {
     setTagsIds(tagId);
-    handleClose();
   } 
   
   const handleSubmit = async (e) => {

@@ -174,10 +174,10 @@ export default function DetalhesBoard() {
             </Form.Group>
             <Card.Text className="det-mais-info">
               Data de Cadastro: {board.createdAt || ""}{" "}
-              <span> &nbsp; &nbsp; &nbsp; </span>Órgão: {board.orgao || ""}
+              <span> &nbsp; &nbsp; &nbsp; </span>Órgão: {board.orgao.nome || ""}
             </Card.Text>
             <Card.Text className="det-mais-info">
-              Tags: <span className="det-tags">{board.tags || ""}</span>{" "}
+              Tags: <span className="det-tags">{board.tags?.nome || ""}</span>{" "}
             </Card.Text>
           </Card.Body>
           <Card.Footer className="text-muted det-footer">

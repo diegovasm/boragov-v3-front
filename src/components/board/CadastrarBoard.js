@@ -79,7 +79,10 @@ export default function CadastrarBoard({ apiUrl }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleChangeTags = (tagId) => setTagsIds(tagId);
+  const handleChangeTags = (tagId) => {
+    setTagsIds(tagId);
+    handleClose();
+  } 
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -90,7 +93,7 @@ export default function CadastrarBoard({ apiUrl }) {
         titulo: "",
         conteudo: "",
       });
-      // navigate('/questoes')
+      navigate('/board')
     } catch (error) {
       console.log(error);
     }
@@ -154,7 +157,7 @@ export default function CadastrarBoard({ apiUrl }) {
           {
             tags
               .filter((tag) => tagsIds.includes(tag._id))
-              .map((tag) => tag.nome)
+              .map((tag) => `${tag.nome} `)
           }
         </Form.Group>
       </Form.Group>

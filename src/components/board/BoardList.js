@@ -38,7 +38,7 @@ export default function BoardList() {
           <div className="resumo-questao">
             <h5>{board.titulo}</h5>
             <p className="tags"> {board.tags.map((tag) => `${tag.nome} `)} </p>
-            <p className="autor"> Autor(nickName): {board.userBoardOwner_id.nickName} </p>
+            <p className="autor"> Autor(nickName): <span className="nickName">{board.userBoardOwner_id.nickName}</span> </p>
           </div>
         </div>
       </Link>

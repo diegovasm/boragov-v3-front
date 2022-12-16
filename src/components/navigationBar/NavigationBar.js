@@ -123,7 +123,7 @@ export default function NavigationBar() {
             value={search}
             onChange={handleOnSearch}
           />
-          <Button onClick={handleSubmitBusca}>Buscar</Button>
+          <Button onClick={handleSubmitBusca} variant="outline-secondary">Buscar</Button>
         </Form>
         <Button onClick={handleOnQuestion} variant="outline-primary">
           Nova Questão

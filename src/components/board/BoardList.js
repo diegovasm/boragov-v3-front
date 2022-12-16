@@ -22,10 +22,13 @@ export default function BoardList() {
       console.log(error)
     }
   }, [])
-
-  const renderTags = () => {
-    board.tags.map((tag) => `${tag.nome} `)
+  
+  if (!isLoading) {
+    const renderTags = () => {
+      board.tags.map((tag) => `${tag.nome} `)
+    }
   }
+  
 
   const renderBoards = board.map((board) => {
     return (

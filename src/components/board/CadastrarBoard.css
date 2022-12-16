@@ -33,3 +33,7 @@
   width: 99.5%;
   margin-bottom: 10px;
 }
+.card-detalhe>button{
+  margin: 0.5vw;
+  width: 7rem;
+}

@@ -23,18 +23,23 @@ export default function BoardList() {
     }
   }, [])
 
+  const renderTags = () => {
+    board.tags.map((tag) => `${tag.nome} `)
+  }
+
   const renderBoards = board.map((board) => {
     return (
       <Link to={`/board/detalhes/${board._id}`}>
         <div className="item-questao" id={board._id}>
           <div className="indicadores-questao">
             <p>{board.votos} votos</p>
-            <p>{board.respostas} respostas</p>
-            <p>{board.views} visualizações</p>
+            <p>{board.respostas.length} respostas</p>
+            <p>{board.visualizacoes} visualizações</p>
           </div>
           <div className="resumo-questao">
             <h5>{board.titulo}</h5>
-            <p className="tags">  </p>
+            <p className="tags"> {renderTags()} </p>
+            <p className="autor"> Autor(nickName): {board.userBoardOwner_id.nickName} </p>
           </div>
         </div>
       </Link>

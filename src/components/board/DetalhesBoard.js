@@ -242,7 +242,7 @@ export default function DetalhesBoard() {
               })}
             </Form.Group>
             <Form.Group>
-              <Button>Fazer comentário</Button>
+              <Button onClick={handleShowCriarComentario}>Fazer comentário</Button>
 
               <Modal
                 show={showCriarComentario}
@@ -279,7 +279,7 @@ export default function DetalhesBoard() {
                 </Modal.Footer>
               </Modal>
 
-              <Button>Oferecer resposta</Button>
+              <Button onClick={handleShowCriarResposta}>Oferecer resposta</Button>
 
               <Modal show={showCriarResposta} onHide={handleCloseCriarResposta}>
                 <Modal.Header closeButton>

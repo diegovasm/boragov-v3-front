@@ -74,7 +74,7 @@ export default function NavigationBar() {
         if (event.key === "Enter" && event.target === "input.me-4.form-control") {
           event.preventDefault();
           console.log(search)
-          navigate(`/board/buscar/${search}`, { replace: true });
+          navigate(`/board/buscar/${search}`);
         }
       }
   

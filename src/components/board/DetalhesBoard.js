@@ -138,6 +138,7 @@ export default function DetalhesBoard() {
     } catch (error) {
       console.log(error);
     }
+    handleCloseCriarComentario()
   };
 
   const handleChangeQuillResposta = async (content, delta, source, editor) => {
@@ -231,6 +232,7 @@ export default function DetalhesBoard() {
               </span>{" "}
             </Card.Text>
             <Form.Group className="comentarios">
+              <div> -- Comentários: -- </div>
               {board.comentarios.map((comentario) => {
                 return (
                   <div>

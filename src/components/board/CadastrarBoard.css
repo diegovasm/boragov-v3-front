@@ -37,3 +37,7 @@
   margin: 0.5vw;
   width: 7rem;
 }
+.tags-lista{
+  display: flex;
+  flex-wrap: wrap;
+}

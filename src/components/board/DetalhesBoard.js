@@ -104,6 +104,10 @@ export default function DetalhesBoard() {
     }
   };
 
+  const renderTags = () => {
+    board.tags.map((tag) => `${tag.nome} `)
+  }
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -177,7 +181,7 @@ export default function DetalhesBoard() {
               <span> &nbsp; &nbsp; &nbsp; </span>Órgão: {board.orgao.nome || ""}
             </Card.Text>
             <Card.Text className="det-mais-info">
-              Tags: <span className="det-tags">{board.tags?.nome || ""}</span>{" "}
+              Tags: <span className="det-tags">{renderTags || ""}</span>{" "}
             </Card.Text>
           </Card.Body>
           <Card.Footer className="text-muted det-footer">

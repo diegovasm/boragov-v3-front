@@ -45,6 +45,7 @@ export default function DetalhesBoard() {
     ],
   };
   const [estadoEditor, setEstadoEditor] = useState(true);
+  const dataatual = new Date()
 
   const incrementaView = () => {
     const clone = board;
@@ -132,7 +133,8 @@ export default function DetalhesBoard() {
   const handleSubmitComentario = async (e) => {
     e.preventDefault();
     try {
-      const clone = { ...board, comentarios: comentario };
+      const clone = { ...board };
+      clone.comentarios.push(comentario)
       delete clone._id;
       await api.put(`board/edit/${id}`, clone);
     } catch (error) {
@@ -142,13 +144,16 @@ export default function DetalhesBoard() {
   };
 
   const handleChangeQuillResposta = async (content, delta, source, editor) => {
-    await setResposta({ resposta, resContent: editor.getContents() });
+    setResposta(prevState => {
+      return {...prevState, resContent: editor.getContents() }
+    })
   };
 
   const handleSubmitResposta = async (e) => {
     e.preventDefault();
     try {
-      const clone = { ...board, respostas: resposta };
+      const clone = { ...board};
+      clone.respostas.push(resposta)
       delete clone._id;
       await api.put(`board/edit/${id}`, clone);
     } catch (error) {
@@ -238,9 +243,8 @@ export default function DetalhesBoard() {
                   <div>
                     <p>
                       # {comentario.userComment_id} # em{" "}
-                      {Date.now().toLocaleString("pt-br")}:{" "}
+                      {dataatual.toLocaleString("pt-BR")}: {comentario.comContent}
                     </p>
-                    <p>{comentario.comContent}</p>
                   </div>
                 );
               })}

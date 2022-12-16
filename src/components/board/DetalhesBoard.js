@@ -244,8 +244,8 @@ export default function DetalhesBoard() {
                 return (
                   <div>
                     <p>
-                      # {comentario.userComment_id} # em 
-                      {comentario.updatedAt}: {comentario.comContent}
+                      # {comentario.userComment_id} # em {" "}
+                      {comentario.updatedAt}: {" "} {comentario.comContent}
                     </p>
                   </div>
                 );

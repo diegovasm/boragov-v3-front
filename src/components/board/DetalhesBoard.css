@@ -53,3 +53,7 @@
 .hide{
     display:none
 }
+.comentarios{
+    text-align: left;
+    font-size: small;
+}

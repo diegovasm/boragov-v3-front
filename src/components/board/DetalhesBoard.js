@@ -319,12 +319,14 @@ export default function DetalhesBoard() {
             </Form.Group>
             <Form.Group>
               {board.respostas.map((resposta) => {
+                return (
                 <ReactQuill
                   className="editor"
                   theme="snow"
                   value={resposta.resContent}
                   readOnly={true}
-                ></ReactQuill>;
+                />
+                )
               })}
             </Form.Group>
           </Card.Body>

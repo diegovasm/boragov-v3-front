@@ -66,28 +66,33 @@ export default function NavigationBar() {
 
   }
 
-  useEffect(() => {
+  const handleSubmitBusca = (e) => {
+    e.preventDefault()
+    console.log(search)
 
-    try{
+  }
+  // useEffect(() => {
 
-      const keyDownHandler = async (event) => {
-        if (event.key === "Enter" && event.target === "input.me-4.form-control") {
-          event.preventDefault();
-          console.log(search)
-          navigate(`/board/buscar/${search}`);
-        }
-      }
+  //   try{
+
+  //     const keyDownHandler = async (event) => {
+  //       if (event.key === "Enter" && event.target === "input.me-4.form-control") {
+  //         event.preventDefault();
+  //         console.log(search)
+  //         navigate(`/board/buscar/${search}`);
+  //       }
+  //     }
   
-      document.addEventListener("keydown", keyDownHandler);
+  //     document.addEventListener("keydown", keyDownHandler);
   
-      return () => {
-        document.removeEventListener("keydown", keyDownHandler);
-      }
+  //     return () => {
+  //       document.removeEventListener("keydown", keyDownHandler);
+  //     }
       
-    }catch (error){
-      console.log(error)
-    }
-  })
+  //   }catch (error){
+  //     console.log(error)
+  //   }
+  // })
   if(!loggedUser){
     return( 
       <>
@@ -118,6 +123,7 @@ export default function NavigationBar() {
             value={search}
             onChange={handleOnSearch}
           />
+          <Button onClick={handleSubmitBusca}>Buscar</Button>
         </Form>
         <Button onClick={handleOnQuestion} variant="outline-primary">
           Nova Questão

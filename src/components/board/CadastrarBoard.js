@@ -150,6 +150,13 @@ export default function CadastrarBoard({ apiUrl }) {
         <Form.Group className="tags-div-board">
           <Button onClick={handleShow}>Adicionar Tag</Button>
         </Form.Group>
+        <Form.Group className="tags-lista">
+          {
+            tags
+              .filter((tag) => tagsIds.includes(tag._id))
+              .map((tag) => tag.nome)
+          }
+        </Form.Group>
       </Form.Group>
 
       <Button

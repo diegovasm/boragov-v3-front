@@ -9,6 +9,7 @@ import { AuthContext } from "../../contexts/authContext";
 
 export default function CadastrarBoard({ apiUrl }) {
   const { loggedUser } = useContext(AuthContext);
+  const id = loggedUser.user?._id
   console.log(loggedUser)
   const toolbarOptions = {
     toolbar: [
@@ -50,7 +51,7 @@ export default function CadastrarBoard({ apiUrl }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.post("/board/cadastrar/6397b3eaef8718faedf1bdf6", form);
+      await api.post(`/board/cadastrar/${id}`, form);
       setForm({
         categoria: "",
         titulo: "",

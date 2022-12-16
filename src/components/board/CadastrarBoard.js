@@ -1,4 +1,10 @@
-import { Button, Form, Modal, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
+import {
+  Button,
+  Form,
+  Modal,
+  ToggleButton,
+  ToggleButtonGroup,
+} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import React, { useContext, useEffect, useState } from "react";
 import ReactQuill from "react-quill";
@@ -9,7 +15,7 @@ import { AuthContext } from "../../contexts/authContext";
 
 export default function CadastrarBoard({ apiUrl }) {
   const { loggedUser } = useContext(AuthContext);
-  const id = loggedUser.user?._id
+  const id = loggedUser.user?._id;
   const toolbarOptions = {
     toolbar: [
       [{ font: [] }, { size: ["small", false, "large", "huge"] }],
@@ -31,7 +37,7 @@ export default function CadastrarBoard({ apiUrl }) {
   const navigate = useNavigate();
   const [orgaos, setOrgaos] = useState([]);
   const [tags, setTags] = useState([]);
-  const [tagsIds, setTagsIds] = useState([])
+  const [tagsIds, setTagsIds] = useState([]);
   const [show, setShow] = useState(false);
   const [form, setForm] = useState({
     categoria: "",
@@ -72,7 +78,7 @@ export default function CadastrarBoard({ apiUrl }) {
   };
 
   const handleAdicionaTags = () => {
-    setForm({ ...form, tags: tagsIds});
+    setForm({ ...form, tags: tagsIds });
     handleClose();
   };
 
@@ -81,8 +87,8 @@ export default function CadastrarBoard({ apiUrl }) {
 
   const handleChangeTags = (tagId) => {
     setTagsIds(tagId);
-  } 
-  
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -92,7 +98,7 @@ export default function CadastrarBoard({ apiUrl }) {
         titulo: "",
         conteudo: "",
       });
-      navigate('/board')
+      navigate("/board");
     } catch (error) {
       console.log(error);
     }
@@ -132,11 +138,9 @@ export default function CadastrarBoard({ apiUrl }) {
           value={form.orgao}
           onChange={handleChange}
         >
-          {
-            orgaos.map((orgao) => {
-              return <option value={orgao._id}>{orgao.nome}</option>
-            })
-          }          
+          {orgaos.map((orgao) => {
+            return <option value={orgao._id}>{orgao.nome}</option>;
+          })}
         </Form.Control>
       </Form.Group>
       <Form.Group>
@@ -153,54 +157,63 @@ export default function CadastrarBoard({ apiUrl }) {
           <Button onClick={handleShow}>Adicionar Tag</Button>
         </Form.Group>
         <Form.Group className="tags-lista">
-          {
-            tags
-              .filter((tag) => tagsIds.includes(tag._id))
-              .map((tag) => `${tag.nome} `)
-          }
+          {tags
+            .filter((tag) => tagsIds.includes(tag._id))
+            .map((tag) => `${tag.nome} `)}
         </Form.Group>
       </Form.Group>
-
-      <Button
-        type="submit"
-        variant="success"
-        className="btn-salvar"
-        onClick={handleSubmit}
-      >
-        Salvar
-      </Button>
-      <Button
-        variant="danger"
-        className="btn-cancelar"
-        onClick={() => navigate("/board")}
-      >
-        Cancelar
-      </Button>
+      <Form.Group className="botoes-cadastrar">
+        <Button
+          type="submit"
+          variant="success"
+          className="btn-salvar"
+          onClick={handleSubmit}
+        >
+          Salvar
+        </Button>
+        <Button
+          variant="danger"
+          className="btn-cancelar"
+          onClick={() => navigate("/board")}
+        >
+          Cancelar
+        </Button>
+      </Form.Group>
       <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Escolha as tags</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <ToggleButtonGroup type="checkbox" value={tagsIds} onChange={handleChangeTags}>
-              {
-                tags.map((tag, index) => {
-                  return <ToggleButton id={`tbg-btn-${index}`} value={tag._id}> {tag.nome} </ToggleButton>
-                })
-              }
-              </ToggleButtonGroup>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={() => {
-                setTagsIds([])
-                handleClose()
-              }}>
-                Cancelar
-              </Button>
-              <Button variant="primary" onClick={handleAdicionaTags}>
-                Concluir
-              </Button>
-            </Modal.Footer>
-          </Modal>
+        <Modal.Header closeButton>
+          <Modal.Title>Escolha as tags</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ToggleButtonGroup
+            type="checkbox"
+            value={tagsIds}
+            onChange={handleChangeTags}
+          >
+            {tags.map((tag, index) => {
+              return (
+                <ToggleButton id={`tbg-btn-${index}`} value={tag._id}>
+                  {" "}
+                  {tag.nome}{" "}
+                </ToggleButton>
+              );
+            })}
+          </ToggleButtonGroup>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            onClick={() => {
+              setTagsIds([]);
+              handleClose();
+            }}
+          >
+            Cancelar
+          </Button>
+          <Button variant="primary" onClick={handleAdicionaTags}>
+            Concluir
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Form>
   );
 }

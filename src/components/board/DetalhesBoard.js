@@ -6,10 +6,23 @@ import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../api/api.js";
 import { toast } from "react-toastify";
 import "./DetalhesBoard.css";
+import { AuthContext } from "../../contexts/authContext";
 
 export default function DetalhesBoard() {
+  const { loggedUser } = useContext(AuthContext);
+  const idUser = loggedUser.user?._id;
   const [board, setBoard] = useState({});
   const [show, setShow] = useState(false);
+  const [showCriarComentario, setShowCriarComentario] = useState(false);
+  const [showCriarResposta, setShowCriarResposta] = useState(false);
+  const [comentario, setComentario] = useState({
+    comContent: "",
+    userComment_id: idUser,
+  });
+  const [resposta, setResposta] = useState({
+    resContent: "",
+    userAnswer_id: idUser,
+  });
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -106,6 +119,39 @@ export default function DetalhesBoard() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleCloseCriarComentario = () => setShowCriarComentario(false);
+  const handleShowCriarComentario = () => setShowCriarComentario(true);
+  const handleCloseCriarResposta = () => setShowCriarResposta(false);
+  const handleShowCriarResposta = () => setShowCriarResposta(true);
+
+  const handleChangeComentario = (e) =>
+    setComentario((comentario.comContent = e.target.value));
+
+  const handleSubmitComentario = async (e) => {
+    e.preventDefault();
+    try {
+      const clone = { ...board, comentarios: comentario };
+      delete clone._id;
+      await api.put(`board/edit/${id}`, clone);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleChangeQuillResposta = async (content, delta, source, editor) => {
+    await setResposta({ resposta, resContent: editor.getContents() });
+  };
+
+  const handleSubmitResposta = async (e) => {
+    e.preventDefault();
+    try {
+      const clone = { ...board, respostas: resposta };
+      delete clone._id;
+      await api.put(`board/edit/${id}`, clone);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const deleteBoard = async () => {
     await api.delete(`board/delete/${id}`);
@@ -177,8 +223,102 @@ export default function DetalhesBoard() {
               <span> &nbsp; &nbsp; &nbsp; </span>Órgão: {board.orgao.nome || ""}
             </Card.Text>
             <Card.Text className="det-mais-info">
-              Tags: <span className="det-tags">{board.tags.map((tag) => `${tag.nome} `) || ""}</span>{" "}
+              Tags:{" "}
+              <span className="det-tags">
+                {board.tags.map((tag) => `${tag.nome} `) || ""}
+              </span>{" "}
             </Card.Text>
+            <Form.Group className="comentarios">
+              {board.comentarios.map((comentario) => {
+                return (
+                  <div>
+                    <p>
+                      # {comentario.userComment_id} # em{" "}
+                      {Date.now().toLocaleString("pt-br")}:{" "}
+                    </p>
+                    <p>{comentario.comContent}</p>
+                  </div>
+                );
+              })}
+            </Form.Group>
+            <Form.Group>
+              <Button>Fazer comentário</Button>
+
+              <Modal
+                show={showCriarComentario}
+                onHide={handleCloseCriarComentario}
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>Fazer Comentário:</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <Form className="card-comentario">
+                    <Form.Group>
+                      <Form.Control
+                        className="det-comentario"
+                        as="textarea"
+                        rows={3}
+                        type="text"
+                        name="comContent"
+                        value={comentario.comContent}
+                        onChange={handleChangeComentario}
+                      />
+                    </Form.Group>
+                  </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button
+                    variant="secondary"
+                    onClick={handleCloseCriarComentario}
+                  >
+                    Cancelar
+                  </Button>
+                  <Button variant="primary" onClick={handleSubmitComentario}>
+                    Fazer Comentário
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+
+              <Button>Oferecer resposta</Button>
+
+              <Modal show={showCriarResposta} onHide={handleCloseCriarResposta}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Oferecer Resposta:</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <Form className="card-resposta">
+                    <ReactQuill
+                      className="editor"
+                      onChange={handleChangeQuillResposta}
+                      theme="snow"
+                      value={resposta.resContent}
+                      modules={toolbarOptions}
+                    ></ReactQuill>
+                  </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button
+                    variant="secondary"
+                    onClick={handleCloseCriarResposta}
+                  >
+                    Cancelar
+                  </Button>
+                  <Button variant="primary" onClick={handleSubmitResposta}>
+                    Fazer Comentário
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+            </Form.Group>
+            <Form.Group>
+              {board.respostas.map((resposta) => {
+                <ReactQuill
+                  className="editor"
+                  theme="snow"
+                  value={resposta.resContent}
+                  readOnly={true}
+                ></ReactQuill>;
+              })}
+            </Form.Group>
           </Card.Body>
           <Card.Footer className="text-muted det-footer">
             <p>
@@ -189,6 +329,7 @@ export default function DetalhesBoard() {
               >
                 Salvar
               </Button>
+
               <Button
                 variant="primary"
                 className="btn-atualizar"

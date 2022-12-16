@@ -23,7 +23,7 @@
 }
 
 .tags-div-board{
-  display: flex;
+  text-align: center;
 }
 
 .titulo-board{
@@ -38,9 +38,14 @@
   width: 7rem;
 }
 .tags-lista{
-  display: flex;
-  flex-wrap: wrap;
+  color: dodgerblue;
+  font-size: small;
+  text-align: center;
+  height: 10vh;
 }
 .btn-group{
   flex-wrap: wrap;
+}
+.botoes-cadastrar{
+  display: flex;
 }

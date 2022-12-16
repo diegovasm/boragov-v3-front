@@ -33,7 +33,7 @@ export default function BoardList() {
         <div className="item-questao" id={board._id}>
           <div className="indicadores-questao">
             <p>{board.votos} votos</p>
-            <p>{board.respostas.length} respostas</p>
+            <p>{board.qtdRespostas} respostas</p>
             <p>{board.visualizacoes} visualizações</p>
           </div>
           <div className="resumo-questao">

@@ -20,6 +20,7 @@ a{
 }
 .resumo-questao{
     margin: 0.5vw;
+    text-align: left;
 }
 .resumo-questao>h5{
     color: rgb(34, 85, 143);
@@ -30,6 +31,14 @@ a{
     margin-bottom: 0.5rem;
  
 }
+.autor{
+    color: rgb(34, 85, 143);
+    margin: 0 0 0 0;
+}
+.nickName{
+    color: darkblue;
+}
+
 .questoes-spinner{
     text-align: center;
 }

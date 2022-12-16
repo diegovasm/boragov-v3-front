@@ -10,7 +10,6 @@ import { AuthContext } from "../../contexts/authContext";
 export default function CadastrarBoard({ apiUrl }) {
   const { loggedUser } = useContext(AuthContext);
   const id = loggedUser.user?._id
-  console.log(loggedUser)
   const toolbarOptions = {
     toolbar: [
       [{ font: [] }, { size: ["small", false, "large", "huge"] }],

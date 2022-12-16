@@ -154,6 +154,8 @@ export default function DetalhesBoard() {
     try {
       const clone = { ...board};
       clone.respostas.push(resposta)
+      if (!clone.qtdRespostas) clone.qtdRespostas = 0
+      clone.qtdRespostas++ 
       delete clone._id;
       await api.put(`board/edit/${id}`, clone);
     } catch (error) {
@@ -242,8 +244,8 @@ export default function DetalhesBoard() {
                 return (
                   <div>
                     <p>
-                      # {comentario.userComment_id} # em{" "}
-                      {dataatual.toLocaleString("pt-BR")}: {comentario.comContent}
+                      # {comentario.userComment_id} # em 
+                      {comentario.updatedAt}: {comentario.comContent}
                     </p>
                   </div>
                 );
@@ -318,14 +320,19 @@ export default function DetalhesBoard() {
               </Modal>
             </Form.Group>
             <Form.Group>
+            <h5> Respostas: </h5>
               {board.respostas.map((resposta) => {
                 return (
+                <div>
+                <p>{`${resposta.userAnswer_id} em ${resposta.updatedAt}`}</p>
                 <ReactQuill
                   className="editor"
                   theme="snow"
                   value={resposta.resContent}
                   readOnly={true}
                 />
+
+                </div>
                 )
               })}
             </Form.Group>

@@ -1,14 +1,15 @@
-import axios from "axios";
-import { Button, Card, Container, Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import ReactQuill, { Quill } from "react-quill";
+import React, { useContext, useState } from "react";
+import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./CadastrarBoard.css";
 import { api } from "../../api/api.js";
+import { AuthContext } from "../../contexts/authContext";
 
 export default function CadastrarBoard({ apiUrl }) {
-  const [value, setValue] = useState("");
+  const { loggedUser } = useContext(AuthContext);
+  console.log(loggedUser)
   const toolbarOptions = {
     toolbar: [
       [{ font: [] }, { size: ["small", false, "large", "huge"] }],

@@ -23,12 +23,7 @@ export default function BoardList() {
     }
   }, [])
   
-  if (!isLoading) {
-    const renderTags = () => {
-      board.tags.map((tag) => `${tag.nome} `)
-    }
-  }
-  
+ 
 
   const renderBoards = board.map((board) => {
     return (
@@ -41,7 +36,7 @@ export default function BoardList() {
           </div>
           <div className="resumo-questao">
             <h5>{board.titulo}</h5>
-            <p className="tags"> {renderTags()} </p>
+            <p className="tags"> {board.tags.map((tag) => `${tag.nome} `)} </p>
             <p className="autor"> Autor(nickName): {board.userBoardOwner_id.nickName} </p>
           </div>
         </div>

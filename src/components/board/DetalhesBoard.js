@@ -125,7 +125,9 @@ export default function DetalhesBoard() {
   const handleShowCriarResposta = () => setShowCriarResposta(true);
 
   const handleChangeComentario = (e) =>
-    setComentario((comentario.comContent = e.target.value));
+    setComentario(prevState => {
+      return {...prevState, comContent: e.target.value}
+    })
 
   const handleSubmitComentario = async (e) => {
     e.preventDefault();

@@ -1,6 +1,6 @@
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Modal, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./CadastrarBoard.css";
@@ -30,11 +30,39 @@ export default function CadastrarBoard({ apiUrl }) {
   };
 
   const navigate = useNavigate();
+  const [orgaos, setOrgaos] = useState([]);
+  const [tags, setTags] = useState([]);
+  const [tagsIds, setTagsIds] = useState([])
+  const [show, setShow] = useState(false);
   const [form, setForm] = useState({
     categoria: "",
     titulo: "",
     conteudo: "",
+    orgao: "",
+    tags: [],
   });
+
+  useEffect(() => {
+    try {
+      const fetchOrgaos = async () => {
+        const response = await api.get("/orgao");
+        setOrgaos(response.data);
+      };
+
+      fetchOrgaos();
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+      const fetchGetTag = async () => {
+        const response = await api.get("/tag/alltag");
+        setTags(response.data);
+      };
+      fetchGetTag();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -44,10 +72,15 @@ export default function CadastrarBoard({ apiUrl }) {
     await setForm({ ...form, conteudo: editor.getContents() });
   };
 
-  // useEffect(() => {
-  //   console.log("Search message inside useEffect: ", form);
-  // }, [form]);
+  const handleAdicionaTags = () => {
+    setForm({ ...form, tags: tagsIds});
+  };
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const handleChangeTags = (tagId) => setTagsIds(tagId);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -78,7 +111,7 @@ export default function CadastrarBoard({ apiUrl }) {
       <Form.Group className="mb-3">
         <Form.Label>Categoria:</Form.Label>
         <Form.Control
-          className="titulo-board"
+          className="categoria-board"
           as="select"
           name="categoria"
           value={form.categoria}
@@ -92,11 +125,17 @@ export default function CadastrarBoard({ apiUrl }) {
         <Form.Label>Órgão:</Form.Label>
         <Form.Control
           className="orgao-board"
-          type="text"
-          //   name="orgao"
-          //   value={form.orgao}
-          //   onChange={handleChange}
-        />
+          as="select"
+          name="orgao"
+          value={form.orgao}
+          onChange={handleChange}
+        >
+          {
+            orgaos.map((orgao) => {
+              return <option value={orgao._id}>{orgao.nome}</option>
+            })
+          }          
+        </Form.Control>
       </Form.Group>
       <Form.Group>
         <ReactQuill
@@ -109,7 +148,7 @@ export default function CadastrarBoard({ apiUrl }) {
       <Form.Group>
         <Form.Label>Tags:</Form.Label>
         <Form.Group className="tags-div-board">
-          <Button>Adicionar Tag</Button>
+          <Button onClick={handleShow}>Adicionar Tag</Button>
         </Form.Group>
       </Form.Group>
 
@@ -124,10 +163,35 @@ export default function CadastrarBoard({ apiUrl }) {
       <Button
         variant="danger"
         className="btn-cancelar"
-        // onClick={() => navigate("/questoes")}
+        onClick={() => navigate("/board")}
       >
         Cancelar
       </Button>
+      <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Escolha as tags</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <ToggleButtonGroup type="checkbox" value={tagsIds} onChange={handleChangeTags}>
+              {
+                tags.map((tag, index) => {
+                  return <ToggleButton id={`tbg-btn-${index}`} value={tag._id}> {tag.nome} </ToggleButton>
+                })
+              }
+              </ToggleButtonGroup>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={() => {
+                setTagsIds([])
+                handleClose()
+              }}>
+                Cancelar
+              </Button>
+              <Button variant="primary" onClick={handleAdicionaTags}>
+                Concluir
+              </Button>
+            </Modal.Footer>
+          </Modal>
     </Form>
   );
 }
